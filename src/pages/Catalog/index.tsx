@@ -38,7 +38,7 @@ const mockProducts = [
     title: 'Product 5',
     image: etb,
     price: 15.95,
-    description: 'Este es el producto 5.',
+    description: 'This es el producto 5.',
   },
   {
     id: 6,
