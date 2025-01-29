@@ -7,6 +7,7 @@ import { Container } from './styles';
 import Catalog from './pages/Catalog';
 import FAQPage from './pages/FAQ';
 import AboutUsPage from './pages/AboutUs';
+import ItemDetails from './pages/Item';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/aboutus" element={<AboutUsPage />} />
+            <Route path="/products/:id" element={<ItemDetails />} />
           </Routes>
         </div>
         <Footer/>
