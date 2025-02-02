@@ -1,3 +1,4 @@
+import { truncateText } from "../../utils";
 import Button from "../Button";
 import Link from "../Link";
 import { CardContainer, Title, Price, Description, Actions, Image } from "./styles";
@@ -21,10 +22,10 @@ const Card: React.FC<CardProps> = ({
   }) => {
     return (
       <CardContainer>
-        <Title>{title}</Title>
+        <Title>{truncateText(title, 25)}</Title>
         <Image src={image} alt={title} />
-        <Price>{price} zl</Price>
-        <Description>{description}</Description>
+        {price ? <Price>{price} zl</Price> : null}
+        {/* {description ? <Description>{description}</Description> : null} */}
         <Actions>
           <Button label="Add to cart" action={onAddToCart} />
           <Link label="Details" href={detailLink} />

@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { getColor } from '../../theme';
 
  export const StyledLink = styled.a<{ disabled?: boolean }>`
-  border: 1px solid ${({ disabled }) => (disabled ? '#ccc' : getColor('primary'))}; 
+  border: 1px solid ${({ disabled }) => (disabled ? '#ccc' : getColor('lightprimary'))}; 
   border-radius: 8px;
   padding: 8px 20px;
   font-size: 1rem;
-  color: ${({ disabled }) => (disabled ? '#aaa' : getColor('primary'))};
+  color: ${({ disabled }) => (disabled ? '#aaa' : getColor('lightprimary'))};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   display: flex;
   align-items: center;

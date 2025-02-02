@@ -4,10 +4,10 @@ import { StyledFooter } from "./styles";
 const Footer: React.FC = () => {
     return (
     <StyledFooter>
-        <Link label={"Shipment"} href={""}/>
-        <Link label={"Pay"} href={""}/>
-        <Link label={"About Us"} href={""}/>
-        <Link label={"FAQ"} href={""}/>
+        <Link label={"Shipment"} href={"/faq"}/>
+        <Link label={"Pay"} href={"/faq"}/>
+        <Link label={"About Us"} href={"/aboutus"}/>
+        <Link label={"FAQ"} href={"/faq"}/>
     </StyledFooter>
 )}
 

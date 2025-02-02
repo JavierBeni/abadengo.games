@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  border: 1px solid ${({ theme }) => theme.colors.primary};
+  width: 240px;
+  border: 1px solid ${({ theme }) => theme.colors.lightprimary};
   border-radius: 8px;
   padding: 15px;
   display: flex;
