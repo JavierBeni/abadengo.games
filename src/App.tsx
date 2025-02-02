@@ -3,7 +3,7 @@ import Home from './pages/Home'; // Componentes de tus páginas
 import Cart from './pages/Cart';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import { Container } from './styles';
+import { Container, Main } from './styles';
 import Catalog from './pages/Catalog';
 import FAQPage from './pages/FAQ';
 import AboutUsPage from './pages/AboutUs';
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <Container>
         <Header label='abadengoGames'/>
-        <div>    
+        <Main>    
             <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/catalog" element={<Catalog />} />
@@ -23,7 +23,7 @@ function App() {
             <Route path="/aboutus" element={<AboutUsPage />} />
             <Route path="/products/:id" element={<ItemDetails />} />
           </Routes>
-        </div>
+        </Main>
         <Footer/>
       </Container>
     </Router>

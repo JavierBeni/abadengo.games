@@ -8,7 +8,7 @@ function Home() {
         {/* <div>
           <Button label="Click Me" action={() => {}} />
         </div> */}
-        <h1>Welcome to abadengoGames</h1>
+        <h1>Welcome to Abadengo Games</h1>
       </Main>
     </div>
   );

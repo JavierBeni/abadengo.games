@@ -6,7 +6,6 @@ export const Container = styled.div`
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
-  background-color: #fff;
 `;
 
 export const Title = styled.h1`
@@ -30,7 +29,7 @@ export const Question = styled.div<{ isOpen: boolean }>`
   transition: color 0.3s;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.darksecondary};
   }
 `;
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const LogoImage = styled.img`
   height: 50px; /* Ajusta la altura según tus necesidades */
+  border-radius: 5px;
   cursor: pointer;
   transition: transform 0.3s;
 

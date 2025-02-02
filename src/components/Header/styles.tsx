@@ -6,7 +6,6 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  height: 60px;
   background-color: #222;
   color: white;
 `;
@@ -30,4 +29,9 @@ export const MenuOptions = styled.nav`
       text-decoration: underline;
     }
   }
+`;
+
+export const UserWrapper = styled.div`
+  display: flex;
+  gap: 20px;
 `;

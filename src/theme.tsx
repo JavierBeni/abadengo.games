@@ -1,8 +1,8 @@
 export const theme = {
     colors: {
-      primary: '#00aaff', // Color principal
+      primary: '#0077ff', // Color principal
       secondary: '#ddd000', // Color secundario
-      darkprimary: '#0077bb', // Color principal
+      darkprimary: '#222888', // Color principal
       darksecondary: '#aa9900', // Color secundario
       lightprimary: '#55ccff', // Color principal
       lightsecondary: '#ffee00', // Color secundario

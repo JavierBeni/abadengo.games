@@ -4,11 +4,11 @@ export const ItemDetailsWrapper = styled.div`
   display: flex;
   gap: 20px;
   padding: 20px;
+  margin: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.background};
   align-items: flex-start;
-  height: 75vh;
 `;
 
 export const ItemImage = styled.img`
@@ -26,7 +26,7 @@ export const ItemInfo = styled.div`
 
 export const ItemName = styled.h2`
   font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
 `;
 
 export const ItemPrice = styled.p`

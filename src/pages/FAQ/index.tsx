@@ -5,16 +5,24 @@ import { Container, Title, Question, Answer, AccordionItem, Arrow } from "./styl
 const FAQPage: React.FC = () => {
     const faqs = [
       {
-        question: '¿Cuál es el tiempo estimado de envío?',
-        answer: 'El tiempo estimado de envío es de 3 a 5 días hábiles dentro de la península.',
+        question: 'What is the estimated shipping time?',
+        answer: 'The estimated shipping time is 3 to 5 business days within the peninsula.',
       },
       {
-        question: '¿Puedo devolver un producto?',
-        answer: 'Sí, aceptamos devoluciones dentro de los primeros 14 días después de la compra.',
+        question: 'Can I return a product?',
+        answer: 'Yes, but the returned product will be examined to verify that it has not been manipulated or resealed.',
       },
       {
-        question: '¿Qué métodos de pago aceptan?',
-        answer: 'Aceptamos pagos con tarjeta de crédito, débito y PayPal.',
+        question: 'What payment methods do you accept?',
+        answer: 'We accept payments by card, Blik card and PayPal. Blik will be the preferred method.',
+      },
+      {
+        question: 'Do you make shipments?',
+        answer: 'Right now, no. In future probably yes.',
+      },
+      {
+        question: 'Who you are?',
+        answer: ' I am Spanish worker living in Warsaw with interest in geek and nerd stuff. :)',
       },
     ];
   
