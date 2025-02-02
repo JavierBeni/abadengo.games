@@ -1,7 +1,7 @@
 import { truncateText } from "../../utils";
 import Button from "../Button";
 import Link from "../Link";
-import { CardContainer, Title, Price, Description, Actions, Image } from "./styles";
+import { CardContainer, Title, Price, Actions, Image } from "./styles";
 
 interface CardProps {
     title: string;
@@ -16,7 +16,6 @@ const Card: React.FC<CardProps> = ({
     title,
     image,
     price,
-    description,
     onAddToCart,
     detailLink,
   }) => {
