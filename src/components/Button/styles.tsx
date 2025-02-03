@@ -10,6 +10,7 @@ export const StyledButton = styled.button`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
   text-align: center;
   transition: background-color 0.5s, color 0.5s;
+  width: fit-content;
 
   &:hover {
     background-color: ${({ disabled }) => disabled ? '#ccc' : getColor('secondary')};

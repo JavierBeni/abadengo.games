@@ -8,20 +8,20 @@ import { mockProducts } from '../../data/data';
 const ItemDetails: React.FC = () => {
 
   const params = useParams();
-  const { name, price, description, image } = mockProducts[Number(params.id)];
+  const item = mockProducts.find(x => x.id === Number(params.id));
 
   const addToCart = useStore((state) => state.addItem);
   const handleAddToCart = () => {
-    addToCart({ name, price, id: 1 }); // Adaptar según la estructura del carrito
+    addToCart({ name: "item?.name", price: 1, id: 1 }); // Adaptar según la estructura del carrito
   };
 
   return (
     <ItemDetailsWrapper>
-      <ItemImage src={image} alt={name} />
+      <ItemImage src={item?.image} alt={item?.name} />
       <ItemInfo>
-        <ItemName>{name}</ItemName>
-        <ItemPrice>${price.toFixed(2)}</ItemPrice>
-        <ItemDescription>{description}</ItemDescription>
+        <ItemName>{item?.name}</ItemName>
+        <ItemPrice>{item?.price.toFixed(2)}zl</ItemPrice>
+        <ItemDescription>{item?.description}</ItemDescription>
         <Button label="Add to Cart" action={handleAddToCart} />
       </ItemInfo>
     </ItemDetailsWrapper>
