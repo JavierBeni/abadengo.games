@@ -1,16 +1,12 @@
 import { Main } from './styles';
 // import Button from '../../components/Button';
 
-function Home() {
+const Home: React.FC = () => {
   return (
-    <div>
-      <Main>
-        {/* <div>
-          <Button label="Click Me" action={() => {}} />
-        </div> */}
-        <h1>Welcome to Abadengo Games</h1>
-      </Main>
-    </div>
+    <Main>
+      <h1>Welcome to Abadengo Games</h1>
+      <h2>BY and FOR collectors</h2>
+    </Main>
   );
 }
 

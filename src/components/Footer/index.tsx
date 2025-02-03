@@ -6,7 +6,7 @@ const Footer: React.FC = () => {
     <StyledFooter>
         <Link label={"Shipment"} href={"/faq"}/>
         <Link label={"Pay"} href={"/faq"}/>
-        <Link label={"About Us"} href={"/aboutus"}/>
+        <Link label={"Contact"} href={"/contact"}/>
         <Link label={"FAQ"} href={"/faq"}/>
     </StyledFooter>
 )}

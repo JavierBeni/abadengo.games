@@ -11,17 +11,17 @@ const CartPage: React.FC = () => {
 
   return (
     <Container>
-      <h2>Tu Carrito</h2>
+      <h2>Cart</h2>
       {cart.items.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
+        <p>Your cart is empty.</p>
       ) : (
         <>
       <Table>
         <thead>
           <TableRow>
-            <TableHeader>Artículo</TableHeader>
-            <TableHeader>Precio (€)</TableHeader>
-            <TableHeader>Acción</TableHeader>
+            <TableHeader>Item</TableHeader>
+            <TableHeader>Price (zl)</TableHeader>
+            <TableHeader>Action</TableHeader>
           </TableRow>
         </thead>
         <tbody>
@@ -32,7 +32,7 @@ const CartPage: React.FC = () => {
               <TableCell>
                     <RemoveButton
                       onClick={() => removeItem(item.id)}
-                      aria-label={`Eliminar ${item.name}`}
+                      aria-label={`Remove ${item.name}`}
                     >
                       <FiTrash2 />
                     </RemoveButton>
@@ -48,7 +48,7 @@ const CartPage: React.FC = () => {
           <BoldText>{subtotal.toFixed(2)} €</BoldText>
         </SummaryRow>
         <SummaryRow>
-          <span>Envío:</span>
+          <span>Shipment:</span>
           <BoldText>{shippingCost.toFixed(2)} €</BoldText>
         </SummaryRow>
         <SummaryRow>

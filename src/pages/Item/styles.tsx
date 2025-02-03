@@ -21,7 +21,6 @@ export const ItemImage = styled.img`
 export const ItemInfo = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
 `;
 
 export const ItemName = styled.h2`
@@ -32,10 +31,11 @@ export const ItemName = styled.h2`
 export const ItemPrice = styled.p`
   font-size: 1.25rem;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const ItemDescription = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
+  white-space: pre;
 `;
