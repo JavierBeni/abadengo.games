@@ -15,7 +15,7 @@ export const IconWrapper = styled.div`
 
 export const CartIcon = styled(FiShoppingCart)`
   font-size: 24px;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.lightprimary};
 `;
 
 export const ItemCount = styled.span`
@@ -35,5 +35,5 @@ export const ItemCount = styled.span`
 export const TotalPrice = styled.span`
   font-size: 14px;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.lightprimary};
 `;
