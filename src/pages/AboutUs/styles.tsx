@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 800px;
-  margin: 20px auto;
+  max-width: 950px;
+  margin: 20px;
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Title = styled.h1`
   text-align: center;
   color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 20px;
+  margin: 0  0 20px 0;
 `;
 
 

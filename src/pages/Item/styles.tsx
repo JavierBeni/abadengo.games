@@ -19,8 +19,11 @@ export const ItemImage = styled.img`
 `;
 
 export const ItemInfo = styled.div`
+  min-width: 150px;
   display: flex;
   flex-direction: column;
+  border-left: 1px solid ${({ theme }) => theme.colors.darksecondary};
+  padding-left: 15px;
 `;
 
 export const ItemName = styled.h2`
@@ -28,14 +31,16 @@ export const ItemName = styled.h2`
   color: ${({ theme }) => theme.colors.secondary};
 `;
 
-export const ItemPrice = styled.p`
+export const ItemPrice = styled.p<{disabled: boolean}>`
   font-size: 1.25rem;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, disabled }) => disabled ? theme.colors.white : theme.colors.grey};
+  text-decoration: ${({ disabled }) => disabled ? null : "line-through"};
 `;
 
 export const ItemDescription = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
   white-space: pre;
+  text-wrap: auto;
 `;

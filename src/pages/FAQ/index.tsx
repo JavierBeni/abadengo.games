@@ -1,28 +1,34 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Container, Title, Question, Answer, AccordionItem, Arrow } from "./styles";
 
 
 const FAQPage: React.FC = () => {
+    const { t } = useTranslation();
     const faqs = [
       {
-        question: 'What is the estimated shipping time?',
-        answer: 'The estimated shipping time is 3 to 5 business days within the peninsula.',
+        question: t("questionReturnProduct"),
+        answer: t("answerReturnProduct"),
       },
       {
-        question: 'Can I return a product?',
-        answer: 'Yes, but the returned product will be examined to verify that it has not been manipulated or resealed.',
+        question: t("questionPaymentMethods"),
+        answer: t("answerPaymentMethods"),
       },
       {
-        question: 'What payment methods do you accept?',
-        answer: 'We accept payments by card, Blik card and PayPal. Blik will be the preferred method.',
+        question: t("questionShipments"),
+        answer: t("answerShipments"),
       },
       {
-        question: 'Do you make shipments?',
-        answer: 'Right now, no. In future probably yes.',
+        question: t("questionShipmentTime"),
+        answer: t("answerShipmentTime"),
       },
       {
-        question: 'Who you are?',
-        answer: ' I am Spanish worker living in Warsaw with interest in geek and nerd stuff. :)',
+        question: t("questionWho"),
+        answer: t("answerWho"),
+      },
+      {
+        question: t("questionTrust"),
+        answer: t("answerTrust"),
       },
     ];
   
@@ -34,7 +40,7 @@ const FAQPage: React.FC = () => {
   
     return (
       <Container>
-        <Title>FAQ</Title>
+        <Title>{t("linkFAQ")}</Title>
         {faqs.map((faq, index) => (
           <AccordionItem key={index}>
             <Question isOpen={openIndex === index} onClick={() => toggleAccordion(index)}>

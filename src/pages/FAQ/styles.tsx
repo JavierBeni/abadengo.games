@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 800px;
-  margin: 20px auto;
+  margin: 20px;
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
@@ -21,7 +21,7 @@ export const AccordionItem = styled.div`
 
 export const Question = styled.div<{ isOpen: boolean }>`
   font-size: 1.2rem;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.lightprimary};
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -39,7 +39,7 @@ export const Answer = styled.div<{ isOpen: boolean }>`
   line-height: 1.6;
   max-height: ${({ isOpen }) => (isOpen ? '200px' : '0')};
   overflow: hidden;
-  transition: max-height 0.3s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
 `;
 
 export const Arrow = styled.span<{ isOpen: boolean }>`
