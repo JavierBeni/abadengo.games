@@ -8,6 +8,7 @@ import jt_sbo from '../assets/pokemon-tcg/jt/sleeved-booster.webp';
 
 export interface item {
   id: string,
+  game: string;
   name: string,
   image: string,
   price: number,
@@ -17,29 +18,35 @@ export interface item {
 export const mockProducts = [
   {
     id: 1,
+    game: "pokemon",
     name: 'Elite Trainer Box',
     image: jt_etb,
-    price: 299,
-    description: "• 9 Pokémon TCG: Scarlet & Violet—Journey Together booster packs" +
-      "\n• Each booster pack contains 10 cards and 1 Basic Energy. Cards vary by pack." +
+    price: 289,
+    status: false,
+    description: "• 9 booster packs. Each booster pack contains 10 cards & 1 Basic Energy" +
       "\n• 1 full-art foil promo card featuring N's Zorua" +
       "\n• 65 card sleeves" +
       "\n• 45 Pokémon TCG Energy cards" +
-      "\n• A player's guide to the Scarlet & Violet—Journey Together expansion" +
+      "\n• A player's guide" +
       "\n• 6 damage-counter dice" +
       "\n• 1 competition-legal coin-flip die" +
       "\n• 2 plastic condition markers" +
       "\n• A box to hold everything, with 4 dividers to keep it organized" +
       "\n• A code card for Pokémon Trading Card Game Live",
-    collection: 'Journey Together'
+    collection: 'Journey Together',
+    comment: "Perfect product to start a set or even start to collect Pokemon TCG"
   },
   {
     id: 2,
+    game: "pokemon",
     name: 'Blister 3 boosters',
     image: jt_b3b,
     price: 89,
-    description: 'This is the product 2.',
-    collection: 'Journey Together'
+    status: false,
+    description: "• 3 booster pack" +
+      "\n• 1 promo card",
+    collection: 'Journey Together',
+    comment: ""
   },
   // {
   //   id: 3,
@@ -51,34 +58,51 @@ export const mockProducts = [
   // },
   {
     id: 4,
+    game: "pokemon",
     name: 'Blister (booster + card + coin)',
     image: jt_b1c,
     price: 25,
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    collection: 'Journey Together'
+    status: false,
+    description: "• 1 booster pack" +
+      "\n• 1 promo card" +
+      "\n• 1 Pokémon coin",
+    collection: 'Journey Together',
+    comment: ""
   },
   {
     id: 5,
+    game: "pokemon",
     name: 'Mini portfolio + booster',
     image: jt_mpb,
     price: 26,
-    description: 'This es el producto 5.',
-    collection: 'Journey Together'
+    status: false,
+    description: "• 1 booster pack" +
+      "\n• 1 portfolio of 60 spaces",
+    collection: 'Journey Together',
+    comment: "Perfect product keep your cards sorted"
   },
   {
     id: 6,
+    game: "pokemon",
     name: 'Blister (booster + 3 cards + coin)',
     image: jt_b3c,
     price: 29,
-    description: 'This is the product 6.',
-    collection: 'Journey Together'
+    status: false,
+    description: "• 1 booster pack" +
+      "\n• 3 promo cards" +
+      "\n• 1 Pokémon coin",
+    collection: 'Journey Together',
+    comment: ""
   },
   {
     id: 7,
+    game: "pokemon",
     name: 'Sleeved booster',
     image: jt_sbo,
     price: 23,
-    description: 'This is the product 7.',
-    collection: 'Journey Together'
+    status: false,
+    description: "• 1 booster sleeved",
+    collection: 'Journey Together',
+    comment: ""
   },
 ];
