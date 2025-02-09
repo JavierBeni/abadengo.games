@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 80vh;
-  max-height: 80vh;
   overflow-y: auto;
+  margin: 10vh 0;
 `;
