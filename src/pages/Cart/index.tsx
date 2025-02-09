@@ -2,18 +2,20 @@ import React from 'react';
 import { useStore , CartItem} from '../../store'; // Tu store de Zustand
 import { Container, Table, TableRow, TableHeader, TableCell, Summary, SummaryRow, BoldText, RemoveButton } from './styles';
 import { FiTrash2 } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const CartPage: React.FC = () => {
   const {cart, removeItem} = useStore();
-  const shippingCost = 4; // Precio fijo de envío
-  const subtotal = cart.items.reduce((acc, item) => acc + item.price, 0); // Total de los artículos
-  const total = subtotal + shippingCost; // Total final
+  const shippingCost = 4;
+  const subtotal = cart.items.reduce((acc, item) => acc + item.price, 0);
+  const total = subtotal + shippingCost;
+  const { t } = useTranslation();
 
   return (
     <Container>
-      <h2>Cart</h2>
+      <h2>{t("titleCart")}</h2>
       {cart.items.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p>{t("textCartEmpty")}</p>
       ) : (
         <>
       <Table>

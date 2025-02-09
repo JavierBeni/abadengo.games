@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  width: 240px;
+  width: 225px;
   border: 1px solid ${({ theme }) => theme.colors.lightprimary};
   border-radius: 8px;
   padding: 15px;
@@ -15,28 +15,35 @@ export const CardContainer = styled.div`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(255, 255, 0, 0.5);
+    box-shadow: 0 0 15px ${({ theme }) => theme.colors.lightprimary};
   }
+
+  @media (max-width: 800px) {
+    width: 100px;
+  }
+
 `;
 
 export const Image = styled.img`
   width: 100%;
-  max-height: 200px;
+  max-height: 180px;
   object-fit: cover;
   border-radius: 8px;
+  object-fit: contain;
 `;
 
 export const Title = styled.h3`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
   margin: 0;
   text-align: center;
 `;
 
-export const Price = styled.p`
+export const Price = styled.p<{ disabled: boolean }>`
   font-size: 1rem;
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme, disabled }) => disabled ? theme.colors.lightprimary : theme.colors.grey};
+  ${({ disabled }) => (disabled ? '#666' : '#fff')};
 `;
 
 export const Description = styled.p`
@@ -50,4 +57,7 @@ export const Actions = styled.div`
   justify-content: space-between;
   gap: 10px;
   width: 100%;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    display: contents;
+  }
 `;

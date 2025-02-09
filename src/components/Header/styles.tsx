@@ -6,12 +6,15 @@ export const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #222;
+  background-color: ${({ theme }) => theme.colors.darkprimaryt};
   color: white;
+  position: fixed;
+  width: -webkit-fill-available;
+  z-index: 1;
 `;
 
-export const UserIcon = styled.div`
-  font-size: 1.2rem;
+export const IconWrapper = styled.div`
+  font-size: 1.5rem;
   cursor: pointer;
 `;
 

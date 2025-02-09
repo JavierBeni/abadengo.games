@@ -3,6 +3,7 @@ import Button from "../../components/Button"; // Reutilizamos el botón que ya c
 import { useStore } from "../../store";
 import { ItemDetailsWrapper, ItemImage, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
 import { mockProducts } from '../../data/data';
+// import ImageCarousel from "../../components/Carrusel";
 
 
 const ItemDetails: React.FC = () => {
@@ -15,14 +16,27 @@ const ItemDetails: React.FC = () => {
     addToCart({ name: "item?.name", price: 1, id: 1 }); // Adaptar según la estructura del carrito
   };
 
+  // const images = [
+  //   "https://picsum.photos/id/237/200/300",
+  //   "https://picsum.photos/id/227/200/300",
+  //   "https://picsum.photos/id/217/200/300",
+  // ];
+
   return (
     <ItemDetailsWrapper>
+      {/* <ImageCarousel images={images} /> */}
       <ItemImage src={item?.image} alt={item?.name} />
       <ItemInfo>
         <ItemName>{item?.name}</ItemName>
-        <ItemPrice>{item?.price.toFixed(2)}zl</ItemPrice>
         <ItemDescription>{item?.description}</ItemDescription>
-        <Button label="Add to Cart" action={handleAddToCart} />
+      </ItemInfo>
+      {item?.comment && <ItemInfo>
+        <ItemName>Seller comment:</ItemName>
+        <ItemDescription>{item?.comment}</ItemDescription>
+      </ItemInfo>}
+      <ItemInfo>
+        <ItemPrice disabled={item ? item.status : false}>{item?.price.toFixed(2)}zl</ItemPrice>
+        <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart} disabled={!item?.status}/>
       </ItemInfo>
     </ItemDetailsWrapper>
   );
