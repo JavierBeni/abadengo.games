@@ -7,5 +7,5 @@ export const Container = styled.div`
 
 export const Main = styled.div`
   overflow-y: auto;
-  margin: 10vh 0;
+  margin: 10vh 3%;
 `;

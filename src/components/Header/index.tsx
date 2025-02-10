@@ -5,7 +5,7 @@ import Dropdown from "../Dropdown";
 import { StyledHeader, MenuOptions, IconWrapper, UserWrapper } from "./styles"
 import aglogo from "../../assets/ag-logo.webp"
 import CartCounter from "../CartCounter";
-import { useMediaDevices } from "../../hooks";
+import { usePersistedLanguage, useMediaDevices } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
@@ -13,17 +13,19 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = () => {
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
     const { mediaIsPhone } = useMediaDevices();
     const navigate = useNavigate();
+    const { changeLanguage } = usePersistedLanguage();
+
     const dowpDownKids = [
-      {action: () => i18n.changeLanguage("es"), label: "es"},
-      {action: () => i18n.changeLanguage("en"), label: "en"},
-      {action: () => i18n.changeLanguage("pl"), label: "pl"},
+      {action: () => changeLanguage("es"), label: "es"},
+      {action: () => changeLanguage("en"), label: "en"},
+      {action: () => changeLanguage("pl"), label: "pl"},
     ];
     const menuKids = [
-      {action: () => navigate("/catalog/pokemon"), label: "Catalog Pokemon"},
-      {action: () => navigate("/catalog/others"), label: "Other products"},
+      {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
+      {action: () => navigate("/catalog/others"), label: t("linkOtherProducts")},
     ];
 
     return (
@@ -33,8 +35,8 @@ const Header: React.FC<HeaderProps> = () => {
           mediaIsPhone ?
             <Dropdown button={<>Ⓜ️</>} elements={menuKids} /> :
             <MenuOptions>
-              <Link label="Catalog Pokemon" href="/catalog/pokemon" />
-              <Link label="Other products" href="/catalog/others" />
+              <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
+              <Link label={t("linkOtherProducts")} href="/catalog/others" />
             </MenuOptions>
         }
         <UserWrapper>
