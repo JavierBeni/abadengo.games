@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   max-width: 800px;
-  margin: 20px;
+  margin: 20px auto;
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;

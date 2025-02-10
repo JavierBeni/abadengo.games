@@ -4,6 +4,8 @@ import enTranslation from "./locales/en/translation.json";
 import esTranslation from "./locales/es/translation.json";
 import plTranslation from "./locales/pl/translation.json";
 
+const savedLanguage = localStorage.getItem("language") || "en";
+
 i18n
   .use(initReactI18next)
   .init({
@@ -12,7 +14,7 @@ i18n
       es: { translation: esTranslation },
       pl: { translation: plTranslation },
     },
-    lng: "en",
+    lng: savedLanguage,
     fallbackLng: "en",
     interpolation: { escapeValue: false },
   });
