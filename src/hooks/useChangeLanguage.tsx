@@ -1,21 +1,19 @@
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
-const LANGUAGE_STORAGE_KEY = "language";
+import { useStore } from "../store";
 
 const usePersistedLanguage = () => {
   const { i18n } = useTranslation();
-
+  const { language, modifyLanguage } = useStore();
   useEffect(() => {
-    const savedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
-    if (savedLanguage && savedLanguage !== i18n.language) {
-      i18n.changeLanguage(savedLanguage);
+    if (language && language !== i18n.language) {
+      i18n.changeLanguage(language);
     }
-  }, [i18n]);
+  }, [i18n, language]);
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, lng);
+    modifyLanguage(lng);
   };
 
   return { i18n, changeLanguage };

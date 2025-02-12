@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^5.4.0",
+    "@tanstack/react-table": "^8.21.2",
     "axios": "^1.7.9",
     "i18next": "^24.2.0",
     "react": "^18.3.1",

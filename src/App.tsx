@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import {
   AboutUsPage,
+  Cards,
   CartPage,
   CatalogPage,
   ContactPage,
@@ -27,6 +28,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/products/:id" element={<ItemPage />} />
+            <Route path="/cards" element={<Cards />} />
           </Routes>
         </Main>
         <Footer/>
