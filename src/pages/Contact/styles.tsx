@@ -29,4 +29,7 @@ export const SectionContent = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
   line-height: 1.6;
+  & a {
+    text-decoration: none;
+  }
 `;

@@ -30,6 +30,14 @@ const FAQPage: React.FC = () => {
         question: t("questionTrust"),
         answer: t("answerTrust"),
       },
+      {
+        question: t("questionWhyYou"),
+        answer: t("answerWhyYou"),
+      },
+      {
+        question: t("questionExpensive"),
+        answer: t("answerExpensive"),
+      },
     ];
   
     const [openIndex, setOpenIndex] = useState<number | null>(null);

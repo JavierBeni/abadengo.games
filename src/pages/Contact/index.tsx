@@ -16,6 +16,18 @@ const ContactPage: React.FC = () => {
             +48 729 211 814
           </SectionContent>
         </Section>
+        <Section>
+          <SectionTitle>Youtube</SectionTitle>
+          <SectionContent>
+            <a href="https://www.youtube.com/@AbadengoGames" target="_blank">AbadengoGames</a>
+          </SectionContent>
+        </Section>
+        <Section>
+          <SectionTitle>OLX</SectionTitle>
+          <SectionContent>
+            {/* <a href="https://www.olx.pl/@AbadengoGames" target="_blank">AbadengoGames</a> */}
+          </SectionContent>
+        </Section>
       </Container>
     );
   };
