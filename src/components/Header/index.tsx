@@ -36,6 +36,7 @@ const Header: React.FC<HeaderProps> = () => {
             <Dropdown button={<>Ⓜ️</>} elements={menuKids} /> :
             <MenuOptions>
               <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
+              <Link label={t("linkCards")} href="/cards" />
               <Link label={t("linkOtherProducts")} href="/catalog/others" />
             </MenuOptions>
         }
