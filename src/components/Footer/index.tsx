@@ -15,6 +15,7 @@ const Footer: React.FC = () => {
     {action: () => navigate("/aboutus"), label: t("linkAboutUs")},
     {action: () => navigate("/contact"), label: t("linkContact")},
     {action: () => navigate("/faq"), label: t("linkFAQ")},
+    {action: () => navigate("/tips"), label: t("linkTips")},
 ];
   return (
   <StyledFooter>
@@ -26,6 +27,7 @@ const Footer: React.FC = () => {
         <Link label={t("linkAboutUs")} href="/aboutus" />
         <Link label={t("linkContact")} href={"/contact"}/>
         <Link label={t("linkFAQ")} href={"/faq"}/>
+        <Link label={t("linkTips")} href={"/tips"}/>
       </>
     }
   </StyledFooter>

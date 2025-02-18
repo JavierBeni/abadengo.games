@@ -3,41 +3,33 @@ import { useTranslation } from "react-i18next";
 import { Container, Title, Question, Answer, AccordionItem, Arrow } from "./styles";
 
 
-const FAQPage: React.FC = () => {
+const TipsPage: React.FC = () => {
     const { t } = useTranslation();
     const faqs = [
       {
-        question: t("questionReturnProduct"),
-        answer: t("answerReturnProduct"),
+        question: t("tipProduct"),
+        answer: t("answerTipProduct"),
       },
       {
-        question: t("questionPaymentMethods"),
-        answer: t("answerPaymentMethods"),
+        question: t("tipCollect"),
+        answer: t("answerTipCollect"),
       },
       {
-        question: t("questionShipments"),
-        answer: t("answerShipments"),
+        question: t("tipBooster"),
+        answer: t("answerTipBooster"),
       },
       {
-        question: t("questionShipmentTime"),
-        answer: t("answerShipmentTime"),
+        question: t("tipWhyBooster"),
+        answer: t("answerTipWhyBooster"),
       },
       {
-        question: t("questionWho"),
-        answer: t("answerWho"),
+        question: t("tipSealedProduct"),
+        answer: t("answerTipSealedProduct"),
       },
       {
-        question: t("questionTrust"),
-        answer: t("answerTrust"),
-      },
-      {
-        question: t("questionWhyYou"),
-        answer: t("answerWhyYou"),
-      },
-      {
-        question: t("questionExpensive"),
-        answer: t("answerExpensive"),
-      },
+        question: t("tipScam"),
+        answer: t("answerTipScam"),
+      }
     ];
   
     const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -48,7 +40,7 @@ const FAQPage: React.FC = () => {
   
     return (
       <Container>
-        <Title>{t("linkFAQ")}</Title>
+        <Title>{t("linkTips")}</Title>
         {faqs.map((faq, index) => (
           <AccordionItem key={index}>
             <Question isOpen={openIndex === index} onClick={() => toggleAccordion(index)}>
@@ -62,4 +54,4 @@ const FAQPage: React.FC = () => {
     );
   };
   
-  export default FAQPage;
+  export default TipsPage;

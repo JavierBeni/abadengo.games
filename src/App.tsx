@@ -4,12 +4,14 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import {
   AboutUsPage,
+  Cards,
   CartPage,
   CatalogPage,
   ContactPage,
   FAQPage,
   HomePage,
-  ItemPage
+  ItemPage,
+  Tips
 } from './pages'
 
 
@@ -27,6 +29,8 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/products/:id" element={<ItemPage />} />
+            <Route path="/cards" element={<Cards />} />
+            <Route path="/tips" element={<Tips />} />
           </Routes>
         </Main>
         <Footer/>

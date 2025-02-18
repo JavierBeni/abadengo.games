@@ -5,17 +5,21 @@ import { SliderWrapper } from "./styles";
 
 type ImageCarouselProps = {
   images: string[];
+  autoplay?: boolean;
+  slidesToShow?: number;
+  noArrows?: boolean;
 };
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, autoplay = false, slidesToShow = 1, noArrows = false }) => {
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: slidesToShow,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: autoplay,
     autoplaySpeed: 3000,
+    arrows: !noArrows,
   };
 
   return (
@@ -23,7 +27,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images }) => {
       <Slider {...settings}>
         {images.map((src, index) => (
           <div key={index}>
-            <img src={src} alt={`Slide ${index}`} style={{ width: "100%", borderRadius: "10px" }} />
+            <img src={src} alt={`Slide ${index}`} style={{ width: "90%", borderRadius: "10px" }} />
           </div>
         ))}
       </Slider>
