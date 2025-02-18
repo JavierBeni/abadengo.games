@@ -4,10 +4,19 @@ import styled from 'styled-components';
 export const Main = styled.main`
   /* flex: 1; */
   display: grid;
+  height: 80vh;
   justify-content: center;
-  align-items: center;
-  & h2 {
+  & > h2,h1 {
     display: flex;
     justify-content: center;
+  }
+`;
+
+
+export const ImageCarouselWrapper = styled.div`
+  & > div {
+    @media (min-width: ${({ theme }) => theme.media.desktop}) {
+      width: 600px;
+    }
   }
 `;

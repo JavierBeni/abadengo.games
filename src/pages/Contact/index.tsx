@@ -25,7 +25,7 @@ const ContactPage: React.FC = () => {
         <Section>
           <SectionTitle>OLX</SectionTitle>
           <SectionContent>
-            {/* <a href="https://www.olx.pl/@AbadengoGames" target="_blank">AbadengoGames</a> */}
+            <a href="https://www.olx.pl/oferty/user/2M8Tpv/" target="_blank">AbadengoGames</a>
           </SectionContent>
         </Section>
       </Container>
