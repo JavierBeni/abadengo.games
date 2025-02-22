@@ -1,7 +1,7 @@
 import { StyledButton } from "./styles";
 
 interface ButtonProps {
-    action: () => void;
+    action?: () => void;
     disabled?: boolean;
     icon?: React.ReactNode;
     label?: string;
