@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { CatalogContainer } from './styles';
 import Card from '../../components/Card';
-import { mockProducts } from '../../data/data';
+import { mockProducts, REACT_APP_URL_BE } from '../../data/data';
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
@@ -10,13 +10,12 @@ import { ItemProps } from '../../data/data';
 const Catalog: React.FC = () => {
   // const params = useParams();
   // const items = mockProducts.find(x => x.id === params.game);
-  const URL_BE = process.env.REACT_APP_URL_BE;
   const handleAddToCart = (productId: number) => {
     console.log(`Producto ${productId} añadido al carrito.`);
   };
   const [products, setProducts] = useState<ItemProps[]>([])
   useEffect(() => {
-    axios.get(`${URL_BE}products/available`)  // Asumiendo que el backend corre en localhost:5000
+    axios.get(`${REACT_APP_URL_BE}products/available`)  // Asumiendo que el backend corre en localhost:5000
       .then(response => {
         setProducts(response.data);
       })
