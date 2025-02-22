@@ -17,6 +17,8 @@ export interface ItemProps {
   description: string,
 }
 
+export const REACT_APP_URL_BE="https://abadengo-backend.onrender.com/api/";
+
 export const mockProducts = [
   {
     id: 1,
