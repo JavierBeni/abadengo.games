@@ -11,10 +11,12 @@ export interface ItemProps {
   id: number,
   game: string;
   name: string,
-  image: string,
+  image: string[],
   price: number,
   status: boolean,
   description: string,
+  set: string,
+  comment: string,
 }
 
 export const REACT_APP_URL_BE="https://abadengo-backend.onrender.com/api/";
