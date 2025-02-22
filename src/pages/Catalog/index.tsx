@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { CatalogContainer } from './styles';
 import Card from '../../components/Card';
-import { mockProducts, REACT_APP_URL_BE } from '../../data/data';
+import { REACT_APP_URL_BE } from '../../data/data';
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
@@ -42,7 +42,7 @@ const Catalog: React.FC = () => {
         <Card
           key={product.id}
           title={product.name}
-          image={mockProducts.find(p => p.id === product.id)?.image}
+          image={product?.image[0]}
           price={product.price}
           status={product.status}
           description={product.description}
