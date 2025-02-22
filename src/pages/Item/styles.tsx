@@ -9,6 +9,9 @@ export const ItemDetailsWrapper = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.background};
   align-items: flex-start;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    display: block;
+  }
 `;
 
 export const ItemImage = styled.img`
@@ -19,7 +22,7 @@ export const ItemImage = styled.img`
 `;
 
 export const ItemInfo = styled.div`
-  min-width: 150px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   border-left: 1px solid ${({ theme }) => theme.colors.darksecondary};
