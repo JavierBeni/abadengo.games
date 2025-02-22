@@ -1,39 +1,47 @@
 import { useParams } from "react-router";
 // import Button from "../../components/Button"; // Reutilizamos el botón que ya creaste
 // import { useStore } from "../../store";
-import { ItemDetailsWrapper, ItemImage, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
-import { mockProducts } from '../../data/data';
-// import ImageCarousel from "../../components/Carrusel";
+import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
+import { ItemProps, REACT_APP_URL_BE } from '../../data/data';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import ImageCarousel from "../../components/Carrusel";
 
 
 const ItemDetails: React.FC = () => {
 
   const params = useParams();
-  const item = mockProducts.find(x => x.id === Number(params.id));
+
+  const [product, setProduct] = useState<ItemProps>();
+  useEffect(() => {
+    axios.get(`${REACT_APP_URL_BE}products/${params.id}`)
+      .then(response => {
+        setProduct(response.data);
+        console.log(response.data.image);
+      })
+      .catch(error => {
+        console.error('Error when we try to GET the products:', error);
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // const addToCart = useStore((state) => state.addItem);
   // const handleAddToCart = () => {
   //   addToCart({ name: "item?.name", price: 1, id: 1 }); // Adaptar según la estructura del carrito
   // };
 
-  // const images = [
-  //   "https://picsum.photos/id/237/200/300",
-  //   "https://picsum.photos/id/227/200/300",
-  //   "https://picsum.photos/id/217/200/300",
-  // ];
-
   return (
     <ItemDetailsWrapper>
-      {/* <ImageCarousel images={images} /> */}
-      <ItemImage src={item?.image} alt={item?.name} />
+      <ImageCarousel images={product?.image || []} />
+      {/* <ItemImage src={product?.image[0]} alt={product?.image[0]} /> */}
       <ItemInfo>
-        <ItemName>{item?.name}</ItemName>
-        <ItemDescription>{item?.description}</ItemDescription>
+        <ItemName>{product?.name}</ItemName>
+        <ItemDescription>{product?.description}</ItemDescription>
       </ItemInfo>
      <ItemInfo>
-        {item?.comment && <ItemName>Seller comment:</ItemName>}
-        {item?.comment && <ItemDescription>{item?.comment}</ItemDescription>}
-        <ItemPrice disabled={item ? item.status : false}>{item?.price.toFixed(2)}zl</ItemPrice>
+        {product?.comment && <ItemName>Seller comment:</ItemName>}
+        {product?.comment && <ItemDescription>{product?.comment}</ItemDescription>}
+        <ItemPrice disabled={product ? product.status : false}>{product?.price.toFixed(2)}zl</ItemPrice>
         {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
       </ItemInfo>
     </ItemDetailsWrapper>
