@@ -18,10 +18,9 @@ export const CardContainer = styled.div`
     box-shadow: 0 0 15px ${({ theme }) => theme.colors.lightprimary};
   }
 
-  @media (max-width: 800px) {
-    width: 100px;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    width: -webkit-fill-available;
   }
-
 `;
 
 export const Image = styled.img`
@@ -30,6 +29,9 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 8px;
   object-fit: contain;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    max-height: 250px;
+  }
 `;
 
 export const Title = styled.h3`
@@ -37,6 +39,9 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.secondary};
   margin: 0;
   text-align: center;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Price = styled.p<{ disabled: boolean }>`
@@ -44,6 +49,9 @@ export const Price = styled.p<{ disabled: boolean }>`
   font-weight: bold;
   color: ${({ theme, disabled }) => disabled ? theme.colors.lightprimary : theme.colors.grey};
   ${({ disabled }) => (disabled ? '#666' : '#fff')};
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const Description = styled.p`
@@ -59,5 +67,8 @@ export const Actions = styled.div`
   width: 100%;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     display: contents;
+    & > * {
+      font-size: 1.5rem;
+    }
   }
 `;

@@ -4,7 +4,7 @@ import { getColor } from '../../theme';
 export const StyledButton = styled.button`
   display: inline-block;
   padding: 10px 15px;
-  background-color: ${({ disabled }) => (disabled ? '#ccc' : getColor('black'))};
+  background-color: ${({ disabled }) => (disabled ? '#ccc' : getColor('primary'))};
   color: ${({ disabled }) => (disabled ? '#666' : '#fff')};
   border: 0px;
   border-radius: 8px;

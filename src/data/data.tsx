@@ -5,13 +5,15 @@ import jt_b1c from '../assets/pokemon-tcg/jt/checklane-blister-box.webp';
 import jt_mpb from '../assets/pokemon-tcg/jt/mini-portfolio-pus-booster.webp';
 import jt_b3c from '../assets/pokemon-tcg/jt/premium-checklane-blister-klinklang.webp';
 import jt_sbo from '../assets/pokemon-tcg/jt/sleeved-booster.webp';
+import sc_upc from '../assets/pokemon-tcg/sc/upc.webp';
 
-export interface item {
-  id: string,
+export interface ItemProps {
+  id: number,
   game: string;
   name: string,
   image: string,
   price: number,
+  status: boolean,
   description: string,
 }
 
@@ -33,7 +35,7 @@ export const mockProducts = [
       "\n• 2 plastic condition markers" +
       "\n• A box to hold everything, with 4 dividers to keep it organized" +
       "\n• A code card for Pokémon Trading Card Game Live",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: "Perfect product to start a set or even start to collect Pokemon TCG"
   },
   {
@@ -45,7 +47,7 @@ export const mockProducts = [
     status: false,
     description: "• 3 booster pack" +
       "\n• 1 promo card",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: ""
   },
   // {
@@ -66,7 +68,7 @@ export const mockProducts = [
     description: "• 1 booster pack" +
       "\n• 1 promo card" +
       "\n• 1 Pokémon coin",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: ""
   },
   {
@@ -78,7 +80,7 @@ export const mockProducts = [
     status: false,
     description: "• 1 booster pack" +
       "\n• 1 portfolio of 60 spaces",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: "Perfect product keep your cards sorted"
   },
   {
@@ -91,18 +93,40 @@ export const mockProducts = [
     description: "• 1 booster pack" +
       "\n• 3 promo cards" +
       "\n• 1 Pokémon coin",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: ""
   },
   {
     id: 7,
+    game: "pokemon",
+    name: 'Ultra Premium Collection Terapagos EX',
+    image: sc_upc,
+    price: 519,
+    status: true,
+    description: "• Terapagos ex promo card" +
+      "\n• Lapras ex promo card" +
+      "\n• Cinderace ex promo card" +
+      "\n• 8 Energy cards in Foil format" +
+      "\n• 3-card magnetic stand" +
+      "\n• Playmat" +
+      "\n• Deck box" +
+      "\n• 6 damage-counter dice" +
+      "\n• 1 competition-legal coin-flip" +
+      "\n• 2 plastic condition markers" +
+      "\n• 18x Pokémon TCG: Booster Pack" +
+      "\n• A code card for Pokémon Trading Card Game Live",
+    set: 'Scarlet & Violet',
+    comment: "This probably the best product in the market by a fair price. Open this give you more than in booster. And the product as all UPC, will rise the price."
+  },
+  {
+    id: 8,
     game: "pokemon",
     name: 'Sleeved booster',
     image: jt_sbo,
     price: 23,
     status: false,
     description: "• 1 booster sleeved",
-    collection: 'Journey Together',
+    set: 'Journey Together',
     comment: ""
   },
 ];
