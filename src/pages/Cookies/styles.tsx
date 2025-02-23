@@ -11,13 +11,6 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-around;
   }
-
-  & a {
-    color: ${({ theme }) => theme.colors.secondary};
-    &:hover {
-      color: ${({ theme }) => theme.colors.lightsecondary};
-    }
-  }
 `;
 
 export const Title = styled.h1`
@@ -44,8 +37,4 @@ export const SectionContent = styled.p`
   & a {
     text-decoration: none;
   }
-`;
-
-export const Text = styled.p`
-  color: ${({ theme }) => theme.colors.primary};
 `;
