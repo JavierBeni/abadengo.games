@@ -13,25 +13,9 @@ import {
   ItemPage,
   Tips
 } from './pages'
-import { useEffect } from 'react';
 
 
 function App() {
-
-  useEffect(() => {
-    const pingBackend = () => {
-      fetch("https://abadengo-backend.onrender.com/").catch(() => {
-        console.log("Backend is asleep, waking it up...");
-      });
-    };
-  
-    // Ping 14 min
-    const interval = setInterval(pingBackend, 14 * 60 * 1000);
-    pingBackend(); // Ping initial
-  
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <Router>
       <Container>

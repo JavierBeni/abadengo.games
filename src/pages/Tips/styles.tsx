@@ -17,6 +17,10 @@ export const Title = styled.h1`
 export const AccordionItem = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
   padding: 10px 0;
+
+  &:last-child{
+    border-bottom: none;
+  }
 `;
 
 export const Question = styled.div<{ isOpen: boolean }>`
