@@ -10,4 +10,15 @@ export const CatalogContainer = styled.div`
     justify-content: center;
     padding: 5px;
   }
+  &.loading {
+    display: block;
+  }
+  & > div {
+    display: flex;
+    justify-content: center;
+    > .pikas {
+      height: 2rem;
+      margin: 0 30px;  
+    }
+  }
 `;

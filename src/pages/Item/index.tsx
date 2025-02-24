@@ -20,7 +20,7 @@ const ItemDetails: React.FC = () => {
         console.log(response.data.image);
       })
       .catch(error => {
-        console.error('Error when we try to GET the products:', error);
+        console.error('🔴 Error when we try to GET the products:', error);
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,9 +39,9 @@ const ItemDetails: React.FC = () => {
         <ItemDescription>{product?.description}</ItemDescription>
       </ItemInfo>
      <ItemInfo>
-        {product?.comment && <ItemName>Seller comment:</ItemName>}
+        {product?.comment && <ItemName>Seller comment</ItemName>}
         {product?.comment && <ItemDescription>{product?.comment}</ItemDescription>}
-        <ItemPrice disabled={product ? product.status : false}>{product?.price.toFixed(2)}zl</ItemPrice>
+        <ItemPrice disabled={product ? product.status : false}><ItemName>Price</ItemName>{product?.price.toFixed(2)}zl</ItemPrice>
         {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
       </ItemInfo>
     </ItemDetailsWrapper>

@@ -6,10 +6,9 @@ import { REACT_APP_URL_BE } from '../../data/data';
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
+import pokegif from '../../assets/pikachu.gif';
 
 const Catalog: React.FC = () => {
-  // const params = useParams();
-  // const items = mockProducts.find(x => x.id === params.game);
   const handleAddToCart = (productId: number) => {
     console.log(`Producto ${productId} añadido al carrito.`);
   };
@@ -20,24 +19,19 @@ const Catalog: React.FC = () => {
         setProducts(response.data);
       })
       .catch(error => {
-        console.error('Error when we try to GET the products:', error);
+        console.error('🔴 Error when we try to GET the products:', error);
       });
   }, []);
 
   return (
-    <CatalogContainer>
-      {/* {items.map((product) => (
-        <Card
-          key={product.id}
-          title={product.name}
-          image={product.image}
-          price={product.price}
-          status={product.status}
-          description={product.description}
-          onAddToCart={() => handleAddToCart(product.id)}
-          detailLink={`/products/${product.id}`}
-        />
-      ))} */}
+    <CatalogContainer className={products.length <= 0 ? "loading" : ""}>   
+      {products.length <= 0 &&
+        <div>
+          <img className='pikas' src={pokegif} alt="my-gif" />
+          Loading products...
+          <img className='pikas' src={pokegif} alt="my-gif" />
+        </div>
+      }
       {products.map((product) => (
         <Card
           key={product.id}

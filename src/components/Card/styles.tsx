@@ -35,12 +35,14 @@ export const Image = styled.img`
 `;
 
 export const Title = styled.h3`
+  height: 50px;
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
   margin: 0;
   text-align: center;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     font-size: 1.5rem;
+    height: 70px;
   }
 `;
 
@@ -61,10 +63,10 @@ export const Description = styled.p`
 `;
 
 export const Actions = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   gap: 10px;
-  width: 100%;
+  width: 100%; */
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     display: contents;
     & > * {
