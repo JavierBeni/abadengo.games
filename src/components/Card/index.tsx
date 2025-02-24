@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { truncateText } from "../../utils";
 // import Button from "../Button";
 import Link from "../Link";
 import { CardContainer, Title, Price, Actions, Image } from "./styles";
@@ -25,7 +24,7 @@ const Card: React.FC<CardProps> = ({
     const { t } = useTranslation();
     return (
       <CardContainer>
-        <Title>{truncateText(title, 22)}</Title>
+        <Title>{title}</Title>
         <Image src={image} alt={title} />
         {price ? <Price disabled={status}>{price} zl</Price> : null}
         {/* {description ? <Description>{description}</Description> : null} */}

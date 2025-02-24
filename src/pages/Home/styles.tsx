@@ -14,7 +14,10 @@ export const Main = styled.main`
 
 
 export const ImageCarouselWrapper = styled.div`
+  display: flex;
+  justify-content: center;
   & > div {
+    width: 360px;
     @media (min-width: ${({ theme }) => theme.media.desktop}) {
       width: 600px;
     }
