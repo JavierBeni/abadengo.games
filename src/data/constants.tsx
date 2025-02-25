@@ -1,0 +1,1 @@
+export const REACT_APP_URL_BE="https://abadengo-backend.onrender.com/api/";
