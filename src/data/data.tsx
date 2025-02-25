@@ -19,8 +19,6 @@ export interface ItemProps {
   comment: string,
 }
 
-export const REACT_APP_URL_BE="https://abadengo-backend.onrender.com/api/";
-
 export const mockProducts = [
   {
     id: 1,
@@ -138,22 +136,21 @@ export const mockProducts = [
 /*
 {
   "id": {
-      "$numberInt": "9"
+      "$numberInt": "14"
   },
   "game": "pokemon",
-  "name": "Armarouge ex Premium Collection",
+  "name": "Blisters Twilight Masquarade",
   "image": [
-      "https://m.media-amazon.com/images/I/81aXaXu7sHL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/71lgQArVADL._AC_SL1077_.jpg",
-      "https://m.media-amazon.com/images/I/61MzPfwAfUL._AC_SL1174_.jpg"
+      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-kingdra.jpg",
+      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-porygon.jpg"
   ],
   "price": {
-      "$numberInt": "169"
+      "$numberInt": "25"
   },
-  "status": false,
-  "description": "• 6 boosters\n• 3 foil cards\n• 65 sleeves\n• 1 magnetic card protector with display base\n• 1 Promo code",
-  "set": "Scarlet & Violet",
-  "comment": "Product you can find without difficult, but it will not be like this long time. The current price for sleeves, full art card, 6 boosters and 1 magnetic card protector with display base is crazy."
+  "status": true,
+  "description": "• 3cards -> 29zl\n• Several blisters -> discount",
+  "set": "Twilight Masquarade",
+  "comment": "Don't open just one booster :/. Open more! :D Buy several blister where you will optein exclusive foil cards."
 }
 */
 

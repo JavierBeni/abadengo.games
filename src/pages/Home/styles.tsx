@@ -23,3 +23,15 @@ export const ImageCarouselWrapper = styled.div`
     }
   }
 `;
+
+export const ImageBG = styled.img`
+  position: absolute;
+  top: 10vh;
+  left: 0;
+  width: 100%;
+  height: 80vh;
+  object-fit: fill;
+  opacity: 0.1;
+  pointer-events: none;
+  filter: grayscale(100%);
+`;

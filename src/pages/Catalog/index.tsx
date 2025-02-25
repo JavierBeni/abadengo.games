@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-
 import { CatalogContainer } from './styles';
 import Card from '../../components/Card';
-import { REACT_APP_URL_BE } from '../../data/data';
 // import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
-import pokegif from '../../assets/pikachu.gif';
+import Loading from '../../components/Loading';
+import { REACT_APP_URL_BE } from '../../data/constants';
 
 const Catalog: React.FC = () => {
+
   const handleAddToCart = (productId: number) => {
     console.log(`Producto ${productId} añadido al carrito.`);
   };
@@ -25,13 +25,7 @@ const Catalog: React.FC = () => {
 
   return (
     <CatalogContainer className={products.length <= 0 ? "loading" : ""}>   
-      {products.length <= 0 &&
-        <div>
-          <img className='pikas' src={pokegif} alt="my-gif" />
-          Loading products...
-          <img className='pikas' src={pokegif} alt="my-gif" />
-        </div>
-      }
+      {products.length <= 0 && <Loading />}
       {products.map((product) => (
         <Card
           key={product.id}

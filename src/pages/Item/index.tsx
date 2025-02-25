@@ -2,10 +2,11 @@ import { useParams } from "react-router";
 // import Button from "../../components/Button"; // Reutilizamos el botón que ya creaste
 // import { useStore } from "../../store";
 import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
-import { ItemProps, REACT_APP_URL_BE } from '../../data/data';
+import { ItemProps } from '../../data/data';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
+import { REACT_APP_URL_BE } from "../../data/constants";
 
 
 const ItemDetails: React.FC = () => {
