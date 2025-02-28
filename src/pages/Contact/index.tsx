@@ -13,17 +13,23 @@ const ContactPage: React.FC = () => {
               </SectionContent>
             </Section>
             <Section>
-              <SectionTitle>Whatsapp</SectionTitle>
+              <SectionTitle>Youtube</SectionTitle>
               <SectionContent>
-                +48 729 211 814
+                <a href="https://www.youtube.com/@AbadengoGames" target="_blank">@AbadengoGames</a>
+              </SectionContent>
+            </Section>
+            <Section>
+              <SectionTitle>Instagram</SectionTitle>
+              <SectionContent>
+                <a href="https://www.instagram.com/abadengogames/" target="_blank">@abadengogames</a>
               </SectionContent>
             </Section>
           </div>
           <div>
-            <Section>
-              <SectionTitle>Youtube</SectionTitle>
+          <Section>
+              <SectionTitle>Whatsapp</SectionTitle>
               <SectionContent>
-                <a href="https://www.youtube.com/@AbadengoGames" target="_blank">AbadengoGames</a>
+                +48 729 211 814
               </SectionContent>
             </Section>
             <Section>
