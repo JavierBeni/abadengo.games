@@ -6,7 +6,7 @@ const Loading: React.FC = () => {
   return (
     <div>
       <PikaGif className='pikas' src={pokegif} alt="my-gif" />
-        Loading products...
+        Loading...
       <PikaGif className='pikas' src={pokegif} alt="my-gif" />
     </div>
   );
