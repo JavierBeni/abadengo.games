@@ -13,9 +13,18 @@ import {
   ItemPage,
   Tips
 } from './pages'
+import { useEffect, useState } from 'react';
+import { useStore } from './store';
 
 
 function App() {
+
+  const [, setForceRender] = useState(0);
+  const language = useStore((state) => state.language);
+  
+  useEffect(() => {
+    setForceRender((prev) => prev + 1);
+  }, [language]);
   return (
     <Router>
       <Container>
