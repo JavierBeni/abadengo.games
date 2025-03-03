@@ -1,8 +1,8 @@
 {
   "redirects": [
     {
-      "source": "https://www.abadengogames.com",
-      "destination": "https://abadengogames.com",
+      "source": "/(.*)",
+      "destination": "https://abadengogames.com/:1",
       "permanent": true
     }
   ]
