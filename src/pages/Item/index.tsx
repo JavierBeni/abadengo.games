@@ -8,12 +8,13 @@ import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
 import { REACT_APP_URL_BE } from "../../data/constants";
 import Loading from "../../components/Loading";
+import Link from "../../components/Link";
+import { useTranslation } from "react-i18next";
 
 
 const ItemDetails: React.FC = () => {
-  
   const params = useParams();
-  
+  const { t } = useTranslation();
   const [product, setProduct] = useState<ItemProps>();
   useEffect(() => {
     axios.get(`${REACT_APP_URL_BE}products/${params.id}`)
@@ -49,6 +50,7 @@ const ItemDetails: React.FC = () => {
             <ItemName>Price</ItemName>
             {product?.price.toFixed(2)}zl
           </ItemPrice>
+          <Link label={t("linkBackToCatalog")} href="/catalog/pokemon" />
           {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
         </ItemInfo>
       </>

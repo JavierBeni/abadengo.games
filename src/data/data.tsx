@@ -152,5 +152,20 @@ export const mockProducts = [
   "set": "Twilight Masquarade",
   "comment": "Don't open just one booster :/. Open more! :D Buy several blister where you will optein exclusive foil cards."
 }
+
+{ 
+  "name": "Galarian Zapdos",
+  "number": 283,
+  "expansion": "SWSH Black Star Promos",
+  "year": 2023,
+  "condition": "Near Mint",
+  "language": "English",
+  "rarity": "Promo",
+  "quantity": 1,
+  "price": 5,
+  "reverse": false,
+  "holo": false,
+  "comments": ""
+}
 */
 

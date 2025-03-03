@@ -12,6 +12,11 @@ export const ItemDetailsWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     display: block;
   }
+  a {
+    margin-top: 10px;
+    margin-left: auto;
+    width: fit-content;
+  }
 `;
 
 export const ItemImage = styled.img`
