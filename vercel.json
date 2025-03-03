@@ -1,5 +1,9 @@
 {
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+  "redirects": [
+    {
+      "source": "https://www.abadengogames.com",
+      "destination": "https://abadengogames.com",
+      "permanent": true
+    }
   ]
 }

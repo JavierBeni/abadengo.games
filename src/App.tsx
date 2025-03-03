@@ -47,5 +47,10 @@ function App() {
     </Router>
   );
 }
+// {
+//   "rewrites": [
+//     { "source": "/(.*)", "destination": "/" }
+//   ]
+// }
 
 export default App;

@@ -20,14 +20,14 @@ export const ItemDetailsWrapper = styled.div`
 `;
 
 export const ItemImage = styled.img`
-  width: 300px;
+  width: 33%;
   height: auto;
   border-radius: 10px;
   object-fit: cover;
 `;
 
 export const ItemInfo = styled.div`
-  width: 400px;
+  width: 33%;
   display: flex;
   flex-direction: column;
   border-left: 1px solid ${({ theme }) => theme.colors.darksecondary};
