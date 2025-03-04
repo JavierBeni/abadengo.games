@@ -24,6 +24,9 @@ export const ItemImage = styled.img`
   height: auto;
   border-radius: 10px;
   object-fit: cover;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    width: 100%;
+  }
 `;
 
 export const ItemInfo = styled.div`
@@ -32,6 +35,9 @@ export const ItemInfo = styled.div`
   flex-direction: column;
   border-left: 1px solid ${({ theme }) => theme.colors.darksecondary};
   padding-left: 15px;
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    width: 100%;
+  }
 `;
 
 export const ItemName = styled.h2`
