@@ -47,19 +47,6 @@ function App() {
     </Router>
   );
 }
-// {
-//   "rewrites": [
-//     { "source": "/(.*)", "destination": "/" }
-//   ]
-// }
-// {
-//   "redirects": [
-//     {
-//       "source": "/(.*)",
-//       "destination": "https://abadengogames.com/",
-//       "permanent": true
-//     }
-//   ]
-// }
+
 
 export default App;
