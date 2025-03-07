@@ -135,22 +135,18 @@ export const mockProducts = [
 
 /*
 {
-  "id": {
-      "$numberInt": "14"
-  },
-  "game": "pokemon",
-  "name": "Blisters Twilight Masquarade",
+  "game": "lorcana",
+  "name": "Booster Set07",
   "image": [
-      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-kingdra.jpg",
-      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-porygon.jpg"
+      "https://www.ateneum.pl/phttw/660319_large.jpg"
   ],
   "price": {
       "$numberInt": "25"
   },
   "status": true,
-  "description": "• 3cards -> 29zl\n• Several blisters -> discount",
-  "set": "Twilight Masquarade",
-  "comment": "Don't open just one booster :/. Open more! :D Buy several blister where you will optein exclusive foil cards."
+  "description": "• 6 Common cards\n• 3 Uncommon cards\n• 2 cards Rare, Super Rare or Legendary\n• 1 FOIL or Enchanted card",
+  "set": "Azurite Sea",
+  "comment": ""
 }
 
 { 

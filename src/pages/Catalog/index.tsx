@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { CatalogContainer } from './styles';
 import Card from '../../components/Card';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
 import Loading from '../../components/Loading';
@@ -12,15 +12,18 @@ const Catalog: React.FC = () => {
   const handleAddToCart = (productId: number) => {
     console.log(`Producto ${productId} añadido al carrito.`);
   };
+  const params = useParams();
   const [products, setProducts] = useState<ItemProps[]>([])
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}products/available`)  // Asumiendo que el backend corre en localhost:5000
+
+    axios.get(`${REACT_APP_URL_BE}products/${params.game}/available`)  // Asumiendo que el backend corre en localhost:5000
       .then(response => {
         setProducts(response.data);
       })
       .catch(error => {
         console.error('🔴 Error when we try to GET the products:', error);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

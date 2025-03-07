@@ -25,6 +25,7 @@ const Header: React.FC<HeaderProps> = () => {
     ];
     const menuKids = [
       {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
+      {action: () => navigate("/catalog/lorcana"), label: t("linkCatalogPokemon")},
       {action: () => navigate("/catalog/others"), label: t("linkOtherProducts")},
     ];
 
@@ -36,6 +37,7 @@ const Header: React.FC<HeaderProps> = () => {
             <Dropdown button={<>Ⓜ️</>} elements={menuKids} /> :
             <MenuOptions>
               <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
+              <Link label={t("linkCatalogLorcana")} href="/catalog/lorcana" />
               <Link label={t("linkCards")} href="/cards" />
               {/* <Link label={t("linkOtherProducts")} href="/catalog/others" /> */}
             </MenuOptions>

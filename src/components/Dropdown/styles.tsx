@@ -20,6 +20,7 @@ export const DropdownButton = styled.button`
   border: none;
   background-color: ${() => getColor('darkprimary')};
   border: 1px solid ${() => getColor('darkprimary')};
+  color: ${() => getColor('white')};
   transition: border 0.5s, color 0.5s;
   border-radius: 5px;
   padding: 10px;
