@@ -8,6 +8,7 @@ import jt_sbo from '../assets/pokemon-tcg/jt/sleeved-booster.webp';
 import sc_upc from '../assets/pokemon-tcg/sc/upc.webp';
 
 export interface ItemProps {
+  _id: string;
   id: number,
   game: string;
   name: string,
@@ -135,18 +136,21 @@ export const mockProducts = [
 
 /*
 {
-  "game": "lorcana",
-  "name": "Booster Set07",
+  "game": "pokemon",
+  "name": "Mad Party Collection",
   "image": [
-      "https://www.ateneum.pl/phttw/660319_large.jpg"
+      "https://product-images.s3.cardmarket.com/1015/526100/526100.png",
+      "https://product-images.s3.cardmarket.com/1015/526110/526110.png",
+      "https://product-images.s3.cardmarket.com/1015/526105/526105.png",
+      "https://product-images.s3.cardmarket.com/1015/526115/526115.png"
   ],
   "price": {
-      "$numberInt": "25"
+      "$numberInt": "129"
   },
   "status": true,
-  "description": "• 6 Common cards\n• 3 Uncommon cards\n• 2 cards Rare, Super Rare or Legendary\n• 1 FOIL or Enchanted card",
-  "set": "Azurite Sea",
-  "comment": ""
+  "description": "• 1 foil promo card\n• 1 bright enamel pin\n• 3 boosters\n• 1 code card",
+  "set": "Shining Fates",
+  "comment": "Pokemon are nice, but shiny are better. In this collection you can find them! (Price by box)"
 }
 
 { 

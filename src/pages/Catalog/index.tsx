@@ -38,7 +38,7 @@ const Catalog: React.FC = () => {
           status={product.status}
           description={product.description}
           onAddToCart={() => handleAddToCart(product.id)}
-          detailLink={`/products/${product.id}`}
+          detailLink={`/products/${product._id}`}
         />
       ))}
     </CatalogContainer>
