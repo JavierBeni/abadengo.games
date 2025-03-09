@@ -19,7 +19,7 @@ export const ImageCarouselWrapper = styled.div`
   & > div {
     width: 360px;
     @media (min-width: ${({ theme }) => theme.media.desktop}) {
-      width: 600px;
+      width: 1200px;
     }
   }
 `;

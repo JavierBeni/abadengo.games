@@ -16,8 +16,7 @@ import { getColor } from '../../theme';
   text-decoration: none !important;
 
   @media (max-width: ${({ theme }) => theme.media.tablet}) {
-    padding: 5px;
-    font-size: 0.8rem;
+    padding: 5px 15px;
   }
 
   &:hover {

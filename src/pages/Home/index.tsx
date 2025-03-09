@@ -25,7 +25,7 @@ const Home: React.FC = () => {
       <h1>Welcome to Abadengo Games</h1>
       <h2>BY and FOR collectors</h2>
       <ImageCarouselWrapper>
-        <ImageCarousel images={[sv01,sv02,sv03,sv04,sv05,sv06,sv07,sv151,sv08,sv09,sv10,sv11]} autoplay slidesToShow={2} noArrows />
+        <ImageCarousel images={[sv01,sv02,sv03,sv04,sv05,sv06,sv07,sv151,sv08,sv09,sv10,sv11]} autoplay slidesToShow={mediaIsPhone ? 1 : 3} noArrows />
       </ImageCarouselWrapper>
     </Main>
   );

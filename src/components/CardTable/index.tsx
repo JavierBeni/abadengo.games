@@ -11,27 +11,15 @@ import { TableWrapper } from "./styles";
 import Button from "../Button";
 import { t } from "i18next";
 import { useStore } from "../../store";
-
-interface CardData {
-  name: string;
-  number: number;
-  expansion: string;
-  year: number;
-  condition: string;
-  language: string;
-  rarity: string;
-  quantity: number;
-  price: number;
-  comments: string;
-}
+import { CardProps } from "../../data/data";
 
 interface CardTableProps {
-  data: CardData[];
+  data: CardProps[];
 }
 
 export const CardTable = ({ data }: CardTableProps) => {
   const { language } = useStore();
-  const columns = useMemo<ColumnDef<CardData>[]>(
+  const columns = useMemo<ColumnDef<CardProps>[]>(
     () => [
       { accessorKey: "name", header: t("tableName") },
       { accessorKey: "number", header: t("tableNumber") },
@@ -42,6 +30,8 @@ export const CardTable = ({ data }: CardTableProps) => {
       { accessorKey: "rarity", header: t("tableRarity") },
       { accessorKey: "quantity", header: t("tableQuantity") },
       { accessorKey: "price", header: t("tablePrice") },
+      { accessorKey: "reverse", header: "Reverse" },
+      { accessorKey: "holo", header: "Holo" },
       { accessorKey: "comments", header: t("tableComments") },
     ],
     // eslint-disable-next-line react-hooks/exhaustive-deps

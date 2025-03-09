@@ -34,7 +34,7 @@ const Header: React.FC<HeaderProps> = () => {
         <Logo src={aglogo} href="/" alt="abadengoGames"/>
         {
           mediaIsPhone ?
-            <Dropdown button={<>Ⓜ️</>} elements={menuKids} /> :
+            <Dropdown button={<>Menu</>} elements={menuKids} /> :
             <MenuOptions>
               <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
               <Link label={t("linkCatalogLorcana")} href="/catalog/lorcana" />

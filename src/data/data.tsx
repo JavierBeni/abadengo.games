@@ -20,6 +20,19 @@ export interface ItemProps {
   comment: string,
 }
 
+export interface CardProps {
+  name: string;
+  number: number;
+  expansion: string;
+  year: number;
+  condition: string;
+  language: string;
+  rarity: string;
+  quantity: number;
+  price: number;
+  comments: string;
+}
+
 export const mockProducts = [
   {
     id: 1,
@@ -137,20 +150,23 @@ export const mockProducts = [
 /*
 {
   "game": "pokemon",
-  "name": "Mad Party Collection",
+  "name": "Iono Premium Tournament Collection",
   "image": [
-      "https://product-images.s3.cardmarket.com/1015/526100/526100.png",
-      "https://product-images.s3.cardmarket.com/1015/526110/526110.png",
-      "https://product-images.s3.cardmarket.com/1015/526105/526105.png",
-      "https://product-images.s3.cardmarket.com/1015/526115/526115.png"
+      "https://ceescards.eu/wp-content/uploads/2024/01/pokemon-tcg-premium-tournament-collection-iono.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_03.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_04.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_05.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_06.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_07.jpg",
+      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_09.jpg",
   ],
   "price": {
-      "$numberInt": "129"
+      "$numberInt": "199"
   },
   "status": true,
-  "description": "• 1 foil promo card\n• 1 bright enamel pin\n• 3 boosters\n• 1 code card",
-  "set": "Shining Fates",
-  "comment": "Pokemon are nice, but shiny are better. In this collection you can find them! (Price by box)"
+  "description": "• 1 full-art foil Supporter card featuring Iono\n• 3 additional foil Supporter cards featuring Iono\n• 65 card sleeves featuring Iono\n• A sturdy deck box featuring Iono\n• A large coin featuring Iono\n• 2 coin condition markers\n• 6 tournament-ready damage dice\n• 6 Pokémon TCG booster packs\n• A code card for Pokémon TCG Live",
+  "set": "Scarlet & Violet",
+  "comment": "Sometimes the best things come in small format. In this small box, you can find so many items!"
 }
 
 { 

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import { CatalogContainer } from './styles';
-import Card from '../../components/Card';
+import { ItemProps } from '../../data/data';
+import { REACT_APP_URL_BE } from '../../data/constants';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import { ItemProps } from '../../data/data';
+import Card from '../../components/Card';
 import Loading from '../../components/Loading';
-import { REACT_APP_URL_BE } from '../../data/constants';
+import NoProducts from '../../components/NoProducts';
+import React, { useEffect, useState } from 'react';
 
 const Catalog: React.FC = () => {
 
@@ -13,7 +14,7 @@ const Catalog: React.FC = () => {
     console.log(`Producto ${productId} añadido al carrito.`);
   };
   const params = useParams();
-  const [products, setProducts] = useState<ItemProps[]>([])
+  const [products, setProducts] = useState<ItemProps[]>();
   useEffect(() => {
 
     axios.get(`${REACT_APP_URL_BE}products/${params.game}/available`)  // Asumiendo que el backend corre en localhost:5000
@@ -27,9 +28,10 @@ const Catalog: React.FC = () => {
   }, []);
 
   return (
-    <CatalogContainer className={products.length <= 0 ? "loading" : ""}>   
-      {products.length <= 0 && <Loading />}
-      {products.map((product) => (
+    <CatalogContainer className={products === undefined ? "loading" : ""}>   
+      {products === undefined && <Loading />}
+      {products && products.length === 0 && <NoProducts />}
+      {products?.map((product) => (
         <Card
           key={product.id}
           title={product.name}
