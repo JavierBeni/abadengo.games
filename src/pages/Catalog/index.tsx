@@ -15,8 +15,8 @@ const Catalog: React.FC = () => {
   };
   const params = useParams();
   const [products, setProducts] = useState<ItemProps[]>();
+  
   useEffect(() => {
-
     axios.get(`${REACT_APP_URL_BE}products/${params.game}/available`)  // Asumiendo que el backend corre en localhost:5000
       .then(response => {
         setProducts(response.data);
@@ -24,8 +24,7 @@ const Catalog: React.FC = () => {
       .catch(error => {
         console.error('🔴 Error when we try to GET the products:', error);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [params]);
 
   return (
     <CatalogContainer className={products === undefined ? "loading" : ""}>   
