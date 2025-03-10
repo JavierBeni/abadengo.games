@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = () => {
     const menuKids = [
       {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
       {action: () => navigate("/catalog/lorcana"), label: t("linkCatalogLorcana")},
-      {action: () => navigate("/catalog/others"), label: t("linkOtherProducts")},
+      {action: () => navigate("/cards"), label: t("linkCards")},
     ];
 
     return (
