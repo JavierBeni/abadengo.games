@@ -8,5 +8,6 @@ export const CardsContainer = styled.div`
   gap: 20px;
   @media (max-width: 800px) {
     justify-content: center;
+    padding: 30px 0px;
   }
 `;

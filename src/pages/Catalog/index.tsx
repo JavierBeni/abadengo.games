@@ -33,7 +33,7 @@ const Catalog: React.FC = () => {
       {products && products.length === 0 && <NoProducts />}
       {products?.map((product) => (
         <Card
-          key={product.id}
+          key={product._id}
           title={product.name}
           image={product?.image[0]}
           price={product.price}
