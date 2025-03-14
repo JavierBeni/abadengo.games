@@ -3,12 +3,17 @@ import styled from 'styled-components';
 // Contenido central
 export const Main = styled.main`
   /* flex: 1; */
-  display: grid;
+  /* display: grid; */
   height: 80vh;
   justify-content: center;
   & > h2,h1 {
     display: flex;
     justify-content: center;
+    margin: 30px 0;
+  }
+  & > div {
+    position: absolute;
+    bottom: 20%;
   }
 `;
 

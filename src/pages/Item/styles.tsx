@@ -52,7 +52,7 @@ export const ItemPrice = styled.p<{disabled: boolean}>`
   text-decoration: ${({ disabled }) => disabled ? null : "line-through"};
 `;
 
-export const ItemDescription = styled.p`
+export const ItemDescription = styled.div`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.text};
   white-space: pre;
