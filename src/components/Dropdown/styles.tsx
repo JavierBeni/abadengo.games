@@ -11,7 +11,7 @@ export const DropdownContainer = styled.div`
     border: none;
     min-height: 25px;
     font-size: 1.5rem;
-    color: color: ${() => getColor('white')};
+    color: ${() => getColor('white')};
   }
 `;
 
