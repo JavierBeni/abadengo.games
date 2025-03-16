@@ -17,10 +17,9 @@ const ItemDetails: React.FC = () => {
   const { t } = useTranslation();
   const [product, setProduct] = useState<ItemProps>();
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}products/${params.id}`)
+    axios.get(`${REACT_APP_URL_BE}product/${params.game}/${params.id}`)
     .then(response => {
       setProduct(response.data);
-      console.log(response.data.image);
     })
     .catch(error => {
       console.error('🔴 Error when we try to GET the products:', error);

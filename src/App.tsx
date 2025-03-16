@@ -37,7 +37,7 @@ function App() {
             <Route path="catalog/:game" element={<CatalogPage />} />
             <Route path="contact" element={<ContactPage />} />
             <Route path="faq" element={<FAQPage />} />
-            <Route path="products/:id" element={<ItemPage />} />
+            <Route path="product/:game/:id" element={<ItemPage />} />
             <Route path="cards" element={<Cards />} />
             <Route path="tips" element={<Tips />} />
           </Routes>
