@@ -2,17 +2,16 @@ import styled from 'styled-components';
 
 // Contenido central
 export const Main = styled.main`
-  /* flex: 1; */
-  /* display: grid; */
-  height: 80vh;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   & > h2,h1 {
-    display: flex;
-    justify-content: center;
     margin: 30px 0;
+    text-align: center;
   }
   & > div {
-    position: absolute;
+    margin-top: 50px;
+    position: relative;
     bottom: 20%;
   }
 `;
