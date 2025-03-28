@@ -37,6 +37,7 @@ export const ItemInfo = styled.div`
   padding-left: 15px;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     width: 100%;
+    border-left: none;
   }
 `;
 

@@ -12,10 +12,16 @@ const ContactPage: React.FC = () => {
                 abadengo.games@gmail.com
               </SectionContent>
             </Section>
-            <Section>
+            {/* <Section>
               <SectionTitle>Youtube</SectionTitle>
               <SectionContent>
                 <a href="https://www.youtube.com/@AbadengoGames" target="_blank">@AbadengoGames</a>
+              </SectionContent>https://www.vinted.pl/member/262266900
+            </Section> */}
+            <Section>
+              <SectionTitle>Vinted</SectionTitle>
+              <SectionContent>
+                <a href="https://www.vinted.pl/member/262266900" target="_blank">AbadengoGames</a>
               </SectionContent>
             </Section>
             <Section>

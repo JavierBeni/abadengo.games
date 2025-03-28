@@ -24,8 +24,8 @@ body {
   width: -webkit-fill-available;
 }
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   :root {
     width: fit-content;
   }
-}
+} */

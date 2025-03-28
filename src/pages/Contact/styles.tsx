@@ -10,6 +10,10 @@ export const Container = styled.div`
   & > div {
     display: flex;
     justify-content: space-around;
+
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+      display: block;
+    }
   }
 
   & a {

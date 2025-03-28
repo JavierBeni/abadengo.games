@@ -12,7 +12,7 @@ import sv08 from '../../assets/pokemon-tcg/sets/sv6pt5-logo-2x.webp';
 import sv09 from '../../assets/pokemon-tcg/sets/sv7-logo-2x.webp';
 import sv10 from '../../assets/pokemon-tcg/sets/sv8-logo-2x.webp';
 import sv11 from '../../assets/pokemon-tcg/sets/sv8pt5-logo-2x.webp';
-import sv151 from '../../assets/pokemon-tcg/sets/Logo_151_(TCG).webp';
+import sv151 from '../../assets/pokemon-tcg/sets/151.webp';
 import { useMediaDevices } from '../../hooks';
 
 // import Button from '../../components/Button';

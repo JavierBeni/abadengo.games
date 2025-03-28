@@ -8,4 +8,8 @@ export const SliderWrapper = styled.div`
     display: flex;
     align-items: center;
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    width: inherit;
+  }
 `;
