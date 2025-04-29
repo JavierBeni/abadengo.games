@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 
 export const CatalogContainer = styled.div`
@@ -26,4 +25,8 @@ export const CatalogContainer = styled.div`
       margin: 0 30px;  
     }
   }
+`;
+
+export const CatalogWrapper = styled.div`
+
 `;

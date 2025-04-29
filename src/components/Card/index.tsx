@@ -1,6 +1,6 @@
-import { useTranslation } from "react-i18next";
 // import Button from "../Button";
-import Link from "../Link";
+// import Link from "../Link";
+import { useNavigate  } from "react-router-dom";
 import { CardContainer, Title, Price, Actions, Image } from "./styles";
 
 interface CardProps {
@@ -21,16 +21,16 @@ const Card: React.FC<CardProps> = ({
     // onAddToCart,
     detailLink,
   }) => {
-    const { t } = useTranslation();
+    const navigate = useNavigate();
     return (
-      <CardContainer>
+      <CardContainer onClick={() => navigate(detailLink)}>
         <Title>{title}</Title>
         <Image src={image} alt={title} />
-        {price ? <Price disabled={status}>{price} zl</Price> : null}
+        {price ? <Price disabled={status}>{price} zl / {Math.ceil(price * 0.24)} €</Price> : null}
         {/* {description ? <Description>{description}</Description> : null} */}
         <Actions>
           {/* <Button label={status ? t("buttonInStock") : t("buttonNoStock")} action={onAddToCart} disabled={!status}/> */}
-          <Link label={t("buttonInStock")} href={detailLink} />
+          {/* <Link label={t("linkDetails")} href={detailLink} /> */}
         </Actions>
       </CardContainer>
     );

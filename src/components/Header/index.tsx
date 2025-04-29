@@ -38,6 +38,7 @@ const Header: React.FC<HeaderProps> = () => {
             <MenuOptions>
               <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
               <Link label={t("linkCatalogLorcana")} href="/catalog/lorcana" />
+              <Link label={t("linkCatalogOnePiece")} href="/catalog/onepiece" />
               <Link label={t("linkCards")} href="/cards" />
               {/* <Link label={t("linkOtherProducts")} href="/catalog/others" /> */}
             </MenuOptions>

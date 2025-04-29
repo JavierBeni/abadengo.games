@@ -10,7 +10,7 @@ export const CardContainer = styled.div`
   align-items: center;
   gap: 10px;
   background-color: ${({ theme }) => theme.colors.background};
-  
+  cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {

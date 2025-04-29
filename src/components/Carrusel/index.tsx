@@ -3,14 +3,19 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { SliderWrapper } from "./styles";
 
+type SlideProps = {
+  image: string;
+  action?: () => void;
+};
+
 type ImageCarouselProps = {
-  images: string[];
+  slides: SlideProps[];
   autoplay?: boolean;
   slidesToShow?: number;
   noArrows?: boolean;
 };
 
-const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, autoplay = false, slidesToShow = 1, noArrows = false }) => {
+const ImageCarousel: React.FC<ImageCarouselProps> = ({ slides, autoplay = false, slidesToShow = 1, noArrows = false }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -21,18 +26,18 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, autoplay = false,
     autoplaySpeed: 3000,
     arrows: !noArrows,
   };
-  console.log('images', images);
+
   return (
     <SliderWrapper>
-      {images.length > 1 ?
+      {slides.length > 1 ?
         <Slider {...settings}>
-          {images.map((src, index) => (
-            <div key={index}>
-              <img src={src} alt={`Slide ${index}`} style={{ width: "90%", borderRadius: "10px", margin: "auto" }} />
+          {slides.map((sld, index) => (
+            <div key={index} onClick={sld.action}>
+              <img src={sld.image} alt={`Slide ${index}`} style={{ width: "90%", borderRadius: "10px", margin: "auto" }} />
             </div>
           ))}
         </Slider> :
-        <img src={images[0]} alt={`Slide`} style={{ width: "90%", borderRadius: "10px", margin: "auto" }} />
+        <img src={slides[0].image} alt={`Slide`} style={{ width: "90%", borderRadius: "10px", margin: "auto" }} />
       }
     </SliderWrapper>
     

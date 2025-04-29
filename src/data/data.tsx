@@ -150,23 +150,17 @@ export const mockProducts = [
 /*
 {
   "game": "pokemon",
-  "name": "Iono Premium Tournament Collection",
+  "name": "Booster Box Surging Sparks",
   "image": [
-      "https://ceescards.eu/wp-content/uploads/2024/01/pokemon-tcg-premium-tournament-collection-iono.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_03.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_04.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_05.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_06.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_07.jpg",
-      "https://www.pokemoncenter.com/images/DAMRoot/Full-Size/10000/P9548_290-85749_09.jpg",
+      "https://jj6zmjq3aaaqkbhd.public.blob.vercel-storage.com/ssbb-FMNqDONE2JCBJRvtzaoqh0YDGBY41C.webp"
   ],
   "price": {
-      "$numberInt": "199"
+      "$numberInt": "749"
   },
   "status": true,
-  "description": "• 1 full-art foil Supporter card featuring Iono\n• 3 additional foil Supporter cards featuring Iono\n• 65 card sleeves featuring Iono\n• A sturdy deck box featuring Iono\n• A large coin featuring Iono\n• 2 coin condition markers\n• 6 tournament-ready damage dice\n• 6 Pokémon TCG booster packs\n• A code card for Pokémon TCG Live",
-  "set": "Scarlet & Violet",
-  "comment": "Sometimes the best things come in small format. In this small box, you can find so many items!"
+  "description": "• 36 boosters of Surging Sparks\n• 360 pokemon cards, 36 codes, 36 energies",
+  "set": "Surging Sparks",
+  "comment": "Try to find the hidden booty Pikachu!"
 }
 
 { 

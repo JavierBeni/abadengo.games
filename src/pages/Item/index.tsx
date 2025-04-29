@@ -31,13 +31,13 @@ const ItemDetails: React.FC = () => {
   // const handleAddToCart = () => {
   //   addToCart({ name: "item?.name", price: 1, id: 1 }); // Adaptar según la estructura del carrito
   // };
-  
+
   return (
     <ItemDetailsWrapper>
     {product === undefined ? 
       <Loading /> :
       <>
-        <ImageCarousel images={product?.image || []} />
+        <ImageCarousel slides={product?.image.map(e => {return {image: e, action: () => null}}) || []} />
         <ItemInfo>
           <ItemName>{product?.name}</ItemName>
           <ItemDescription>{product?.description}</ItemDescription>
@@ -47,7 +47,7 @@ const ItemDetails: React.FC = () => {
           {product?.comment && <ItemDescription>{product?.comment}</ItemDescription>}
           <ItemPrice disabled={product ? product.status : false}>
             <ItemName>Price</ItemName>
-            {product?.price.toFixed(2)}zl
+            {product?.price}zl / {Math.ceil(product?.price * 0.24)}€
           </ItemPrice>
           <Link label={t("linkBackToCatalog")} href="/catalog/pokemon" />
           {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
