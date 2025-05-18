@@ -18,6 +18,7 @@ export interface ItemProps {
   description: string,
   set: string,
   comment: string,
+  type: string
 }
 
 export interface CardProps {

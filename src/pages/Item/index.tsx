@@ -1,7 +1,7 @@
 import { useParams } from "react-router";
 // import Button from "../../components/Button"; // Reutilizamos el botón que ya creaste
 // import { useStore } from "../../store";
-import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
+import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription, ItemSet } from "./styles";
 import { ItemProps } from '../../data/data';
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -40,6 +40,7 @@ const ItemDetails: React.FC = () => {
         <ImageCarousel slides={product?.image.map(e => {return {image: e, action: () => null}}) || []} />
         <ItemInfo>
           <ItemName>{product?.name}</ItemName>
+          <ItemSet>{product?.set}</ItemSet>
           <ItemDescription>{product?.description}</ItemDescription>
         </ItemInfo>
         <ItemInfo>

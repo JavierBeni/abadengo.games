@@ -45,8 +45,12 @@ export const ItemName = styled.h2`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.colors.secondary};
 `;
+export const ItemSet = styled.h3`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.darksecondary};
+`;
 
-export const ItemPrice = styled.p<{disabled: boolean}>`
+export const ItemPrice = styled.div<{disabled: boolean}>`
   font-size: 1.25rem;
   font-weight: bold;
   color: ${({ theme, disabled }) => disabled ? theme.colors.white : theme.colors.grey};

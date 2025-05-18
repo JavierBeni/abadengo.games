@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const CatalogContainer = styled.div`
-  padding: 30px;
+  padding: 0 30px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -28,5 +28,6 @@ export const CatalogContainer = styled.div`
 `;
 
 export const CatalogWrapper = styled.div`
-
+  display: flex;
+  margin: 20px;
 `;

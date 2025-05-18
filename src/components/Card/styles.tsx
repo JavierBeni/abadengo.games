@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
+  height: fit-content;
   width: 225px;
   border: 1px solid ${({ theme }) => theme.colors.lightprimary};
   border-radius: 8px;
