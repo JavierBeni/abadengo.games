@@ -23,11 +23,15 @@ const Header: React.FC<HeaderProps> = () => {
       {action: () => changeLanguage("en"), label: "en"},
       {action: () => changeLanguage("pl"), label: "pl"},
     ];
+    // const menuKids = [
+
+    //   {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
+    //   {action: () => navigate("/catalog/lorcana"), label: t("linkCatalogLorcana")},
+    //   {action: () => navigate("/catalog/onepiece"), label: t("linkCatalogOnePiece")},
+    //   {action: () => navigate("/cards"), label: t("linkCards")},
+    // ];
     const menuKids = [
-      {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
-      {action: () => navigate("/catalog/lorcana"), label: t("linkCatalogLorcana")},
-      {action: () => navigate("/catalog/onepiece"), label: t("linkCatalogOnePiece")},
-      {action: () => navigate("/cards"), label: t("linkCards")},
+      {action: () => navigate("/catalog/all"), label: t("linkCatalog")}
     ];
 
     return (
@@ -37,10 +41,12 @@ const Header: React.FC<HeaderProps> = () => {
           mediaIsPhone ?
             <Dropdown button={<>Menu</>} elements={menuKids} /> :
             <MenuOptions>
-              <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
+              {/* <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
               <Link label={t("linkCatalogLorcana")} href="/catalog/lorcana" />
               <Link label={t("linkCatalogOnePiece")} href="/catalog/onepiece" />
-              <Link label={t("linkCards")} href="/cards" />
+              <Link label={t("linkCatalogNaruto")} href="/catalog/naruto" /> */}
+              <Link label={t("linkCatalog")} href="/catalog/all" />
+              {/* <Link label={t("linkCards")} href="/cards" /> */}
               {/* <Link label={t("linkOtherProducts")} href="/catalog/others" /> */}
             </MenuOptions>
         }
