@@ -10,4 +10,7 @@ export const StyledFooter = styled.footer`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.darkprimaryt};
   color: white;
+  nav {
+    display: contents;
+  }
 `;

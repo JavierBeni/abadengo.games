@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
+  height: auto;
+  max-height: 300px;
   width: 225px;
   border: 1px solid ${({ theme }) => theme.colors.lightprimary};
   border-radius: 8px;
@@ -19,7 +21,8 @@ export const CardContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    width: -webkit-fill-available;
+    // width: -webkit-fill-available;
+    width: 140px;
   }
 `;
 
@@ -30,7 +33,7 @@ export const Image = styled.img`
   border-radius: 8px;
   object-fit: contain;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    max-height: 250px;
+    max-height: 200px;
   }
 `;
 
@@ -41,8 +44,8 @@ export const Title = styled.h3`
   margin: 0;
   text-align: center;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    font-size: 1.5rem;
-    height: 70px;
+    // font-size: 1.5rem;
+    height: auto;
   }
 `;
 
@@ -52,8 +55,12 @@ export const Price = styled.p<{ disabled: boolean }>`
   color: ${({ theme, disabled }) => disabled ? theme.colors.lightprimary : theme.colors.grey};
   ${({ disabled }) => (disabled ? '#666' : '#fff')};
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    font-size: 1.5rem;
+    // font-size: 1.5rem;
   }
+`;
+
+export const PriceSeparator = styled.span`
+  color: ${({ theme }) => theme.colors.darksecondary};
 `;
 
 export const Description = styled.p`

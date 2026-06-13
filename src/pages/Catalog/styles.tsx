@@ -19,7 +19,7 @@ export const CatalogContainer = styled.div`
   }
   & > div {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     overflow-y: hidden;
     > .pikas {
       height: 2rem;

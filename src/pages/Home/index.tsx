@@ -1,33 +1,81 @@
+import React, { useEffect, useState } from 'react';
 import ImageCarousel from '../../components/Carrusel';
-import { ImageBG, Main, ImageCarouselWrapper } from './styles';
+import { ImageBG, Main, ImageCarouselWrapper, ProductsSection } from './styles';
 import bg_home from '../../assets/bg-home.webp';
-import sv01 from '../../assets/pokemon-tcg/sets/sv01-logo-2x.webp';
-import sv02 from '../../assets/pokemon-tcg/sets/sv02-header-logo-2x.webp';
-import sv03 from '../../assets/pokemon-tcg/sets/sv03-header-logo-2x.webp';
-import sv04 from '../../assets/pokemon-tcg/sets/sv04-logo-cmyk-2x.webp';
-import sv05 from '../../assets/pokemon-tcg/sets/sv04pt5-logo-2x.webp';
-import sv06 from '../../assets/pokemon-tcg/sets/sv5-logo-2x.webp';
-import sv07 from '../../assets/pokemon-tcg/sets/sv6-logo-2x.webp';
-import sv08 from '../../assets/pokemon-tcg/sets/sv6pt5-logo-2x.webp';
-import sv09 from '../../assets/pokemon-tcg/sets/sv7-logo-2x.webp';
-import sv10 from '../../assets/pokemon-tcg/sets/sv8-logo-2x.webp';
-import sv11 from '../../assets/pokemon-tcg/sets/sv8pt5-logo-2x.webp';
-import sv151 from '../../assets/pokemon-tcg/sets/Logo_151_(TCG).webp';
-import { useMediaDevices } from '../../hooks';
+import one_piece from '../../assets/one_piece.webp';
+import lorcana from '../../assets/lorcana.webp';
+import pokemon from '../../assets/pokemon_tcg.webp';
+import riftbound from '../../assets/riftbound.webp';
+import dragon_ball from '../../assets/dragon_ball.webp';
+import naruto from '../../assets/naruto.webp';
 
-// import Button from '../../components/Button';
+import { useMediaDevices } from '../../hooks';
+import { useNavigate } from 'react-router-dom';
+import Card from '../../components/Card';
+import Loading from '../../components/Loading';
+import axios from 'axios';
+import { ItemProps } from '../../data/data';
+import { REACT_APP_URL_BE } from '../../data/constants';
 
 const Home: React.FC = () => {
   const { mediaIsPhone } = useMediaDevices();
+  const navigate = useNavigate();
+  const [products, setProducts] = useState<ItemProps[]>();
+  const [loading, setLoading] = useState(true);
+
+  const slides = [
+    {image: one_piece, action: () => navigate("/catalog/onepiece")},
+    {image: pokemon, action: () => navigate("/catalog/pokemon")},
+    {image: lorcana, action: () => navigate("/catalog/lorcana")},
+    {image: riftbound, action: () => navigate("/catalog/riftbound")},
+    {image: dragon_ball, action: () => navigate("/catalog/dragonball")},
+    {image: naruto, action: () => navigate("/catalog/naruto")},
+  ];
+
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`${REACT_APP_URL_BE}products/all/available`)
+      .then(response => {
+        setProducts(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('🔴 Error when we try to GET the products:', error);
+        setLoading(false);
+      });
+  }, []);
+
+  const handleAddToCart = (productId: number) => {
+    console.log(`Producto ${productId} añadido al carrito.`);
+  };
+
   return (
-    <Main>
+    <>
       {!mediaIsPhone ? <ImageBG src={bg_home} alt="Overlay"/> : null}
-      <h1>Welcome to Abadengo Games</h1>
-      <h2>BY and FOR collectors</h2>
-      <ImageCarouselWrapper>
-        <ImageCarousel images={[sv01,sv02,sv03,sv04,sv05,sv06,sv07,sv151,sv08,sv09,sv10,sv11]} autoplay slidesToShow={2} noArrows />
-      </ImageCarouselWrapper>
-    </Main>
+      <Main>
+        <h1>Welcome to Abadengo Games</h1>
+        <h2>BY and FOR collectors</h2>
+        <ImageCarouselWrapper>
+          <ImageCarousel slides={slides} autoplay slidesToShow={4} noArrows />
+        </ImageCarouselWrapper>
+        <ProductsSection>
+          {loading && <Loading />}
+          {!loading && products && products.length === 0 && <p>No products found</p>}
+          {products?.map((product) => (
+            <Card
+              key={product.id}
+              title={product.name}
+              image={product?.image[0]}
+              price={product.price}
+              status={product.status}
+              description={product.description}
+              onAddToCart={() => handleAddToCart(product.id)}
+              detailLink={`/product/${product.game}/${product.id}`}
+            />
+          ))}
+        </ProductsSection>
+      </Main>
+    </>
   );
 }
 

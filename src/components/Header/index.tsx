@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 import Link from "../Link"
 import Logo from "../Logo";
 import Dropdown from "../Dropdown";
@@ -18,22 +19,22 @@ const Header: React.FC<HeaderProps> = () => {
     const navigate = useNavigate();
     const { changeLanguage } = usePersistedLanguage();
 
-    const dowpDownKids = [
-      {action: () => changeLanguage("es"), label: "es"},
-      {action: () => changeLanguage("en"), label: "en"},
-      {action: () => changeLanguage("pl"), label: "pl"},
-    ];
-    const menuKids = [
-      {action: () => navigate("/catalog/pokemon"), label: t("linkCatalogPokemon")},
-      {action: () => navigate("/catalog/others"), label: t("linkOtherProducts")},
-    ];
+    const dropdownKids = useMemo(() => [
+      {action: () => changeLanguage("es"), label: "es", id: "lang-es"},
+      {action: () => changeLanguage("en"), label: "en", id: "lang-en"},
+      {action: () => changeLanguage("pl"), label: "pl", id: "lang-pl"},
+    ], [changeLanguage]);
+    
+    const menuKids = useMemo(() => [
+      {action: () => navigate("/catalog/all"), label: t("linkCatalog"), id: "menu-catalog"}
+    ], [navigate, t]);
 
     return (
     <StyledHeader>
         <Logo src={aglogo} href="/" alt="abadengoGames"/>
         {
-          mediaIsPhone ?
-            <Dropdown button={<>Ⓜ️</>} elements={menuKids} /> :
+          // mediaIsPhone ?
+          //   <Dropdown button={<>Menu</>} elements={menuKids} /> :
             <MenuOptions>
               <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
               <Link label={t("linkCards")} href="/cards" />
@@ -41,7 +42,7 @@ const Header: React.FC<HeaderProps> = () => {
             </MenuOptions>
         }
         <UserWrapper>
-            <Dropdown button={<IconWrapper>🌐</IconWrapper>} elements={dowpDownKids} active={i18n.language}/>
+            <Dropdown button={<IconWrapper>🌐</IconWrapper>} elements={dropdownKids} active={i18n.language}/>
             {/* <CartCounter/>
             <IconWrapper>👤</IconWrapper> */}
         </UserWrapper>
