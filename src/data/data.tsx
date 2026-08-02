@@ -8,7 +8,8 @@ import jt_sbo from '../assets/pokemon-tcg/jt/sleeved-booster.webp';
 import sc_upc from '../assets/pokemon-tcg/sc/upc.webp';
 
 export interface ItemProps {
-  id: number,
+  _id: string;
+  type: string;
   game: string;
   name: string,
   image: string[],

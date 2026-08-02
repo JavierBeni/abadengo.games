@@ -29,6 +29,7 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
             <Route path="/products/:id" element={<ItemPage />} />
+            {/* <Route path="/products/:game/:id" element={<ItemPage />} /> */}
             <Route path="/cards" element={<Cards />} />
             <Route path="/tips" element={<Tips />} />
           </Routes>

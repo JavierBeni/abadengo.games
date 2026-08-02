@@ -10,12 +10,12 @@ import { REACT_APP_URL_BE } from "../../data/constants";
 
 
 const ItemDetails: React.FC = () => {
-
+  
   const params = useParams();
 
   const [product, setProduct] = useState<ItemProps>();
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}products/${params.id}`)
+    axios.get(`${REACT_APP_URL_BE}products/${params._id}`)
       .then(response => {
         setProduct(response.data);
         console.log(response.data.image);

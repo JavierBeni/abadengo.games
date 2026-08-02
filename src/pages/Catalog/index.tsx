@@ -70,14 +70,14 @@ const Catalog: React.FC = () => {
         {productsShown && productsShown.length === 0 && <NoProducts />}
         {productsShown?.map((product) => (
           <Card
-            key={product.id}
+            key={product._id}
             title={product.name}
             image={product?.image[0]}
             price={product.price}
             status={product.status}
             description={product.description}
-            onAddToCart={() => handleAddToCart(product.id)}
-            detailLink={`/product/${product.game}/${product.id}`}
+            // onAddToCart={() => handleAddToCart(product.id)}
+            detailLink={`/product/${product.game}/${product._id}`}
           />
         ))}
       </CatalogContainer>
