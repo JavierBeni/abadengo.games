@@ -9,7 +9,7 @@ import sc_upc from '../assets/pokemon-tcg/sc/upc.webp';
 
 export interface ItemProps {
   _id: string;
-  id: number,
+  type: string;
   game: string;
   name: string,
   image: string[],
@@ -17,8 +17,7 @@ export interface ItemProps {
   status: boolean,
   description: string,
   set: string,
-  comment: string,
-  type: string
+  comment: string
 }
 
 export interface CardProps {

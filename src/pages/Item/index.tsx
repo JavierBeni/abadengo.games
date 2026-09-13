@@ -1,32 +1,48 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 // import Button from "../../components/Button"; // Reutilizamos el botón que ya creaste
 // import { useStore } from "../../store";
-import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription, ItemSet } from "./styles";
+import {
+  ItemDetailsWrapper,
+  ItemGallery,
+  ItemInfo,
+  ItemName,
+  ItemPrice,
+  ItemDescription,
+  ItemEyebrow,
+  ItemMeta,
+  Availability,
+  DetailSection,
+  PriceSeparator,
+  PriceValue,
+} from "./styles";
 import { ItemProps } from '../../data/data';
 import axios from "axios";
 import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
 import { REACT_APP_URL_BE } from "../../data/constants";
-import Loading from "../../components/Loading";
-import Link from "../../components/Link";
-import { useTranslation } from "react-i18next";
 
 
 const ItemDetails: React.FC = () => {
-  const params = useParams();
-  const { t } = useTranslation();
-  const [product, setProduct] = useState<ItemProps>();
-  useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}product/${params.game}/${params.id}`)
-    .then(response => {
-      setProduct(response.data);
-    })
-    .catch(error => {
-      console.error('🔴 Error when we try to GET the products:', error);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
   
+  const { game, id } = useParams<{ game: string; id: string }>();
+
+  const [product, setProduct] = useState<ItemProps>();
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    if (!game || !id) return;
+
+    axios.get(`${REACT_APP_URL_BE}product/${game}/${id}`)
+      .then(response => {
+        setProduct(response.data);
+      })
+      .catch(error => {
+        console.error('🔴 Error when we try to GET the products:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [game, id]);
+
   // const addToCart = useStore((state) => state.addItem);
   // const handleAddToCart = () => {
   //   addToCart({ name: "item?.name", price: 1, id: 1 }); // Adaptar según la estructura del carrito
@@ -34,27 +50,49 @@ const ItemDetails: React.FC = () => {
 
   return (
     <ItemDetailsWrapper>
-    {product === undefined ? 
-      <Loading /> :
-      <>
-        <ImageCarousel slides={product?.image.map(e => {return {image: e, action: () => null}}) || []} />
-        <ItemInfo>
-          <ItemName>{product?.name}</ItemName>
-          <ItemSet>{product?.set}</ItemSet>
-          <ItemDescription>{product?.description}</ItemDescription>
-        </ItemInfo>
-        <ItemInfo>
-          {product?.comment && <ItemName>Seller comment</ItemName>}
-          {product?.comment && <ItemDescription>{product?.comment}</ItemDescription>}
-          <ItemPrice disabled={product ? product.status : false}>
-            <ItemName>Price</ItemName>
-            {product?.price}zl / {Math.ceil(product?.price * 0.24)}€
-          </ItemPrice>
-          <Link label={t("linkBackToCatalog")} href="/catalog/pokemon" />
-          {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
-        </ItemInfo>
-      </>
-    }
+      {isLoading ? (
+        <ItemInfo>Loading product...</ItemInfo>
+      ) : product ? (
+        <>
+          <ItemGallery>
+            <ImageCarousel
+              slides={product.image.map((image, index) => ({
+                image,
+                id: `${product._id}-${index}`,
+              }))}
+            />
+          </ItemGallery>
+          <ItemInfo>
+            <ItemEyebrow>{product.game} / {product.set}</ItemEyebrow>
+            <ItemName>{product.name}</ItemName>
+            <Availability available={product.status}>
+              {product.status ? "Available now" : "Currently unavailable"}
+            </Availability>
+            <ItemMeta>
+              <span>Collection</span>
+              <strong>{product.set}</strong>
+            </ItemMeta>
+            <DetailSection>
+              <ItemEyebrow>About this item</ItemEyebrow>
+              <ItemDescription>{product.description}</ItemDescription>
+            </DetailSection>
+            {product.comment && (
+              <DetailSection>
+                <ItemEyebrow>Seller note</ItemEyebrow>
+                <ItemDescription>{product.comment}</ItemDescription>
+              </DetailSection>
+            )}
+            <ItemPrice available={product.status}>
+              <span>Price</span>
+              <PriceValue>
+                {product.price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(product.price * 0.24)} <small>€</small>
+              </PriceValue>
+            </ItemPrice>
+          </ItemInfo>
+        </>
+      ) : (
+        <ItemInfo>We couldn't find this product.</ItemInfo>
+      )}
     </ItemDetailsWrapper>
   );
 };

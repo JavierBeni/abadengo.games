@@ -1,36 +1,45 @@
-import { CatalogContainer, CatalogWrapper } from './styles';
+import React, { useEffect, useState } from 'react';
+import { CatalogContainer, CatalogLayout } from './styles';
+import Card from '../../components/Card';
+import Filters from '../../components/Filters';
+import NoProducts from '../../components/NoProducts';
+import Loading from '../../components/Loading';
+import axios from 'axios';
 import { ItemProps } from '../../data/data';
 import { REACT_APP_URL_BE } from '../../data/constants';
 import { useParams } from 'react-router-dom';
-import { useMediaDevices } from "../../hooks";
-import axios from 'axios';
-import Card from '../../components/Card';
-import Loading from '../../components/Loading';
-import NoProducts from '../../components/NoProducts';
-import React, { useEffect, useState } from 'react';
-import Filters from '../../components/Filters';
-// import Dropdown from "../../components/Dropdown";
+import useMediaDevices from '../../hooks/useMediaDevices';
 
 const Catalog: React.FC = () => {
-
-  const handleAddToCart = (productId: number) => {
-    console.log(`Producto ${productId} añadido al carrito.`);
-  };
   const params = useParams();
   const { mediaIsPhone } = useMediaDevices();
   const [products, setProducts] = useState<ItemProps[]>();
   const [productsShown, setProductsShown] = useState<ItemProps[]>();
-  const [sets, setSets] = useState<string[]>([]);
+  const [games, setGames] = useState<string[]>([]);
+  const [sets, setSets] = useState<(string | { set: string; game: string })[]>([]);
   const [types, setTypes] = useState<string[]>([]);
+  const [filterGame, setFilterGame] = useState<string>("All");
   const [filterSet, setFilterSet] = useState<string>("All");
   const [filterType, setFilterType] = useState<string>("All");
   
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}products/${params.game}/available`)  // Asumiendo que el backend corre en localhost:5000
+    axios.get(`${REACT_APP_URL_BE}products/all/available`)
       .then(response => {
         setProducts(response.data);
         setProductsShown(response.data);
-        setSets(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.set))]);
+        setGames(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.game))]);
+        
+        // Crear array de sets con información de game
+        const setsWithGame = Array.from(
+          new Map(
+            response.data.map((p: ItemProps) => [
+              p.set,
+              { set: p.set, game: p.game }
+            ])
+          ).values()
+        ) as { set: string; game: string }[];
+        
+        setSets(["All", ...setsWithGame]);
         setTypes(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.type))]);
       })
       .catch(error => {
@@ -40,17 +49,18 @@ const Catalog: React.FC = () => {
 
 
   useEffect(() => {
-    if (filterSet === 'All' && filterType === 'All') setProductsShown(products);
+    if (filterSet === 'All' && filterType === 'All' && filterGame === 'All') setProductsShown(products);
     if (filterType !== 'All') setProductsShown(products?.filter(p => p.type === filterType));
-    if (filterSet !== 'All') setProductsShown(products?.filter(p => p.set === filterSet));
+    const filterSetValue = filterSet;
+    if (filterSetValue !== 'All') setProductsShown(products?.filter(p => p.set === filterSetValue));
+    if (filterGame !== 'All') setProductsShown(products?.filter(p => p.game === filterGame));
   }
   , [filterSet, filterType, products]);
 
   return (
-    <CatalogWrapper>
-      {/* <Dropdown button={<>{filterSet}</>} elements={sets.map(s => {return {action: () => setFilterSet(s), label: s}})} /> */}
-      {!mediaIsPhone && <Filters sets={sets} types={types} setFilterSet={setFilterSet} setFilterType={setFilterType}/>} 
-      <CatalogContainer className={products === undefined ? "loading" : ""}>   
+    <CatalogLayout>
+      {!mediaIsPhone && <Filters games={games} sets={sets} types={types} setFilterGame={setFilterGame} setFilterSet={setFilterSet} setFilterType={setFilterType}/>}
+      <CatalogContainer className={products === undefined ? "loading" : ""}>
         {productsShown === undefined && <Loading />}
         {productsShown && productsShown.length === 0 && <NoProducts />}
         {productsShown?.map((product) => (
@@ -61,12 +71,12 @@ const Catalog: React.FC = () => {
             price={product.price}
             status={product.status}
             description={product.description}
-            onAddToCart={() => handleAddToCart(product.id)}
+            // onAddToCart={() => handleAddToCart(product.id)}
             detailLink={`/product/${product.game}/${product._id}`}
           />
         ))}
       </CatalogContainer>
-    </CatalogWrapper>
+    </CatalogLayout>
   );
 };
 

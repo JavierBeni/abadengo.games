@@ -1,4 +1,6 @@
+import React from "react";
 import { StyledLink } from "./styles";
+import { isValidHref } from "../../utils/validators";
 
 interface LinkProps {
     disabled?: boolean;
@@ -8,12 +10,14 @@ interface LinkProps {
   }
 
 const Link: React.FC<LinkProps> = ({ label, href, disabled = false, icon }) => {
+    const validHref = !disabled && isValidHref(href) ? href : undefined;
+    
     return (
-      <StyledLink href={disabled ? undefined : href} disabled={disabled}>
+      <StyledLink href={validHref} disabled={disabled}>
         {icon && <span>{icon}</span>}
         {label}
       </StyledLink>
     );
   };
   
-  export default Link;
+  export default React.memo(Link);

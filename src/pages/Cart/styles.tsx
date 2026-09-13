@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export const TableCell = styled.td`
   padding: 8px;
+  white-space: nowrap;
 `;
 
 export const Summary = styled.div`
@@ -26,12 +27,22 @@ export const Container = styled.div`
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    margin: 20px 16px;
+    padding: 16px;
+  }
 `;
 
 export const Table = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    display: block;
+    overflow-x: auto;
+  }
 `;
 
 export const TableRow = styled.tr`

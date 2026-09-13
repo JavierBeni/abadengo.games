@@ -22,6 +22,16 @@ export const Container = styled.div`
       color: ${({ theme }) => theme.colors.lightsecondary};
     }
   }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    margin: 20px 16px;
+    padding: 16px;
+
+    & > div:first-of-type,
+    & > div:last-of-type {
+      flex-direction: column;
+    }
+  }
 `;
 
 export const Title = styled.h1`
@@ -45,6 +55,7 @@ export const SectionContent = styled.p`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
   line-height: 1.6;
+  overflow-wrap: anywhere;
   & a {
     text-decoration: none;
   }
