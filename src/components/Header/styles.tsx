@@ -9,7 +9,9 @@ export const StyledHeader = styled.header`
   background-color: ${({ theme }) => theme.colors.darkprimaryt};
   color: white;
   position: fixed;
-  width: -webkit-fill-available;
+  width: 100%;
+  left: 0;
+  box-sizing: border-box;
   z-index: 1;
 `;
 

@@ -73,5 +73,9 @@
   "tipSealedProduct": "Veo que los sobres sueltos son más baratos que las cajas que tienen la misma cantidad. ¿Por qué?",
   "answerTipSealedProduct": "Los sobres individuales pueden provenir de cajas de sobres u otras cajas abiertas, por lo que pueden ser más económicos porque se elimina el precio de los artículos secundarios. Las cajas suelen venir con cartas foil u otros obsequios muy amables.",
   "tipScam": "¿Hay estafas en Pokémon TCG?",
-  "answerTipScam": "Desafortunadamente, más de las que deberían. No las diré aquí. Solo recomiendo: comprar solo en fuentes confiables; mirar dos veces las cartas que compres; comparar su carta o producto sellado con imágenes en Internet; si ve algo sospechoso, no compre y busque información sobre el vendedor."
+  "answerTipScam": "Desafortunadamente, más de las que deberían. No las diré aquí. Solo recomiendo: comprar solo en fuentes confiables; los sobres individuales no son la mejor opción; mirar dos veces las cartas que compres; comparar su carta o producto sellado con imágenes en Internet; si ve algo sospechoso, no compre y busque información sobre el vendedor.",
+  "pokemon": "Pokemon",
+  "onepiece": "One Piece",
+  "naruto": "Naruto",
+  "lorcana": "Lorcana"
 }

@@ -6,7 +6,6 @@ export const FiltersWrapper = styled.div`
   padding: 0 10px 10px 10px;
   border-radius: 8px;
   height: fit-content;
-  
   .filteroption {
     padding: 2px 10px;
     margin: 3px 0;
@@ -14,6 +13,7 @@ export const FiltersWrapper = styled.div`
     border-radius: 8px;
     color: ${({ theme }) => theme.colors.darksecondary};
     transition: color 0.3s;
+    cursor: pointer;
     &:hover {
       color: ${({ theme }) => theme.colors.lightsecondary}
     }
