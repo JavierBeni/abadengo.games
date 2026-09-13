@@ -20,9 +20,9 @@ const Header: React.FC<HeaderProps> = () => {
     const { changeLanguage } = usePersistedLanguage();
 
     const dropdownKids = useMemo(() => [
-      {action: () => changeLanguage("es"), label: "es", id: "lang-es"},
-      {action: () => changeLanguage("en"), label: "en", id: "lang-en"},
-      {action: () => changeLanguage("pl"), label: "pl", id: "lang-pl"},
+      {action: () => changeLanguage("es"), label: "🇪🇸 ES", id: "lang-es"},
+      {action: () => changeLanguage("en"), label: "🇬🇧 EN", id: "lang-en"},
+      {action: () => changeLanguage("pl"), label: "🇵🇱 PL", id: "lang-pl"},
     ], [changeLanguage]);
     
     const menuKids = useMemo(() => [
@@ -36,8 +36,8 @@ const Header: React.FC<HeaderProps> = () => {
           // mediaIsPhone ?
           //   <Dropdown button={<>Menu</>} elements={menuKids} /> :
             <MenuOptions>
-              <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" />
-              <Link label={t("linkCards")} href="/cards" />
+              {/* <Link label={t("linkCatalogPokemon")} href="/catalog/pokemon" /> */}
+              {/* <Link label={t("linkCards")} href="/cards" /> */}
               {/* <Link label={t("linkOtherProducts")} href="/catalog/others" /> */}
             </MenuOptions>
         }

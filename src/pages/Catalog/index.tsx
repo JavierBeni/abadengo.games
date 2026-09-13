@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CatalogContainer } from './styles';
+import { CatalogContainer, CatalogLayout } from './styles';
 import Card from '../../components/Card';
 import Filters from '../../components/Filters';
 import NoProducts from '../../components/NoProducts';
@@ -62,8 +62,7 @@ const Catalog: React.FC = () => {
   , [filterSet, filterType, products]);
 
   return (
-    <div>
-      {/* <Dropdown button={<>{filterSet}</>} elements={sets.map(s => {return {action: () => setFilterSet(s), label: s}})} /> */}
+    <CatalogLayout>
       {!mediaIsPhone && <Filters games={games} sets={sets} types={types} setFilterGame={setFilterGame} setFilterSet={setFilterSet} setFilterType={setFilterType}/>}
       <CatalogContainer className={products === undefined ? "loading" : ""}>
         {productsShown === undefined && <Loading />}
@@ -81,7 +80,7 @@ const Catalog: React.FC = () => {
           />
         ))}
       </CatalogContainer>
-    </div>
+    </CatalogLayout>
   );
 };
 

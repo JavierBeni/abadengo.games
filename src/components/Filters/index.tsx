@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FiltersWrapper } from "./styles";
+import { useTranslation } from 'react-i18next';
 
 interface FiltersProps {
     games?: string[];
@@ -12,6 +13,7 @@ interface FiltersProps {
 
 const Filters: React.FC<FiltersProps> = ({ games, sets, types, setFilterGame, setFilterSet, setFilterType }) => {
     const [selectedFilter, setSelectedFilter] = useState<string>("");
+    const { t } = useTranslation();
     const selected = (s: string) => s === selectedFilter ? true : false;
     return (
       <FiltersWrapper>
@@ -19,7 +21,7 @@ const Filters: React.FC<FiltersProps> = ({ games, sets, types, setFilterGame, se
         {games && (
           <>
             <h5>Games:</h5>
-            {games.map(e => <div key={e} className={`filteroption ${selected(e) ? "selected" : "" }`} onClick={() => {setFilterGame?.(e); setSelectedFilter(e)}}>{e}</div>)}
+            {games.map(e => <div key={e} className={`filteroption ${selected(e) ? "selected" : "" }`} onClick={() => {setFilterGame?.(e); setSelectedFilter(e)}}>{t(e)}</div>)}
           </>
         )}
         <h5>Expansions:</h5>

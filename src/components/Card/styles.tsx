@@ -21,8 +21,8 @@ export const CardContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    // width: -webkit-fill-available;
-    width: 140px;
+    width: 100%;
+    box-sizing: border-box;
   }
 `;
 

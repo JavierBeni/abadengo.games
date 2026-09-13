@@ -1,8 +1,19 @@
 
 import styled from 'styled-components';
 
-export const CatalogContainer = styled.div`
+export const CatalogLayout = styled.div`
+  display: flex;
   padding: 30px;
+  gap: 30px;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    padding: 0 16px;
+  }
+`;
+
+export const CatalogContainer = styled.div`
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -11,8 +22,9 @@ export const CatalogContainer = styled.div`
   }
   
   @media (max-width: 800px) {
-    justify-content: center;
-    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
   &.loading {
     display: block;

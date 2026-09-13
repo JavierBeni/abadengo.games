@@ -1,49 +1,138 @@
 import styled from 'styled-components';
 
 export const ItemDetailsWrapper = styled.div`
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
-  border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.background};
+  display: grid;
+  grid-template-columns: minmax(260px, 0.78fr) minmax(320px, 1.22fr);
+  gap: clamp(24px, 5vw, 72px);
+  max-width: 1180px;
+  margin: 32px auto 0;
+  padding: clamp(16px, 2vw, 24px);
+  border: 1px solid ${({ theme }) => theme.colors.darksecondary};
+  border-radius: 24px;
+  background: ${({ theme }) => theme.colors.darkprimaryt};
+  box-shadow: 0 24px 70px ${({ theme }) => `${theme.colors.darkprimary}88`};
   align-items: flex-start;
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    display: block;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 20px 16px 0;
+    padding: 24px 18px 30px;
   }
 `;
 
-export const ItemImage = styled.img`
-  width: 300px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
+export const ItemGallery = styled.div`
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 16px;
+  border-radius: 18px;
+  background: ${({ theme }) => theme.colors.background};
+  border: 1px solid ${({ theme }) => theme.colors.darksecondary};
+
+  & > div {
+    min-height: 230px;
+    display: flex;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    padding: 8px;
+
+    & > div {
+      min-height: 200px;
+    }
+  }
 `;
 
 export const ItemInfo = styled.div`
-  width: 400px;
+  width: 100%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid ${({ theme }) => theme.colors.darksecondary};
-  padding-left: 15px;
+  align-items: flex-start;
+  padding-top: 8px;
+`;
+
+export const ItemEyebrow = styled.span`
+  color: ${({ theme }) => theme.colors.lightprimary};
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 `;
 
 export const ItemName = styled.h2`
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.secondary};
+  margin: 10px 0 14px;
+  color: ${({ theme }) => theme.colors.lightsecondary};
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
 `;
 
-export const ItemPrice = styled.p<{disabled: boolean}>`
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: ${({ theme, disabled }) => disabled ? theme.colors.white : theme.colors.grey};
-  text-decoration: ${({ disabled }) => disabled ? null : "line-through"};
+export const Availability = styled.span<{ available: boolean }>`
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: ${({ theme, available }) => available ? theme.colors.lightprimary : theme.colors.tertiary};
+  color: ${({ theme, available }) => available ? theme.colors.black : theme.colors.white};
+  font-size: 0.78rem;
+  font-weight: 700;
+`;
+
+export const ItemMeta = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 28px 0 26px;
+  padding: 14px 0;
+  border-top: 1px solid ${({ theme }) => theme.colors.darksecondary};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.darksecondary};
+  color: ${({ theme }) => theme.colors.lightprimary};
+  font-size: 0.9rem;
+
+  strong {
+    color: ${({ theme }) => theme.colors.white};
+    font-weight: 700;
+  }
+`;
+
+export const DetailSection = styled.section`
+  width: 100%;
+  margin-bottom: 24px;
+`;
+
+export const ItemPrice = styled.p<{ available: boolean }>`
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  margin: 6px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid ${({ theme }) => theme.colors.darksecondary};
+  color: ${({ theme, available }) => available ? theme.colors.lightsecondary : theme.colors.grey};
+  font-size: 2rem;
+  font-weight: 800;
+
+  span {
+    margin-right: auto;
+    color: ${({ theme }) => theme.colors.lightprimary};
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  small {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
 `;
 
 export const ItemDescription = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.colors.text};
-  white-space: pre;
-  text-wrap: auto;
+  margin: 10px 0 0;
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 0.98rem;
+  line-height: 1.7;
+  white-space: pre-line;
 `;
