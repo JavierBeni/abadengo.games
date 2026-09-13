@@ -105,7 +105,6 @@ export const DetailSection = styled.section`
 export const ItemPrice = styled.p<{ available: boolean }>`
   display: flex;
   align-items: baseline;
-  gap: 12px;
   width: 100%;
   margin: 6px 0 0;
   padding-top: 22px;
@@ -114,7 +113,7 @@ export const ItemPrice = styled.p<{ available: boolean }>`
   font-size: 2rem;
   font-weight: 800;
 
-  span {
+  > span:first-child {
     margin-right: auto;
     color: ${({ theme }) => theme.colors.lightprimary};
     font-size: 0.78rem;
@@ -122,6 +121,14 @@ export const ItemPrice = styled.p<{ available: boolean }>`
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
+`;
+
+export const PriceValue = styled.span`
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 2rem;
 
   small {
     font-size: 0.9rem;
@@ -135,4 +142,8 @@ export const ItemDescription = styled.p`
   font-size: 0.98rem;
   line-height: 1.7;
   white-space: pre-line;
+`;
+
+export const PriceSeparator = styled.span`
+  color: ${({ theme }) => theme.colors.darksecondary};
 `;

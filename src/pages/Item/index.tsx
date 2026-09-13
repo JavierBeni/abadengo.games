@@ -12,6 +12,8 @@ import {
   ItemMeta,
   Availability,
   DetailSection,
+  PriceSeparator,
+  PriceValue,
 } from "./styles";
 import { ItemProps } from '../../data/data';
 import axios from "axios";
@@ -82,7 +84,9 @@ const ItemDetails: React.FC = () => {
             )}
             <ItemPrice available={product.status}>
               <span>Price</span>
-              {product.price.toFixed(2)} <small>zl</small>
+              <PriceValue>
+                {product.price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(product.price * 0.24)} <small>€</small>
+              </PriceValue>
             </ItemPrice>
           </ItemInfo>
         </>
