@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 
 interface FiltersProps {
     games?: string[];
-    sets: string[];
+    sets: (string | { set: string; game: string })[];
     types: string[];
     setFilterGame?: React.Dispatch<React.SetStateAction<string>>;
     setFilterSet: React.Dispatch<React.SetStateAction<string>>;
@@ -25,7 +25,7 @@ const Filters: React.FC<FiltersProps> = ({ games, sets, types, setFilterGame, se
           </>
         )}
         <h5>Expansions:</h5>
-        {sets.map(e => <div key={e} className={`filteroption ${selected(typeof e === 'string' ? e : e.set) ? "selected" : "" }`} onClick={() => {setFilterSet(typeof e === 'string' ? e : e.set); setSelectedFilter(typeof e === 'string' ? e : e.set)}}>{typeof e === 'string' ? e : e.set}</div>)}
+        {sets.map(e => <div key={typeof e === 'string' ? e : e.set} className={`filteroption ${selected(typeof e === 'string' ? e : e.set) ? "selected" : "" }`} onClick={() => {setFilterSet(typeof e === 'string' ? e : e.set); setSelectedFilter(typeof e === 'string' ? e : e.set)}}>{typeof e === 'string' ? e : e.set}</div>)}
         <h5>Product:</h5>
         {types.map(e => <div key={e} className={`filteroption ${selected(e) ? "selected" : "" }`} onClick={() => {setFilterSet("All"); setFilterType(e)}}>{e}</div>)}
       </FiltersWrapper>

@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMediaDevices } from "../../hooks";
 import Dropdown from "../Dropdown";

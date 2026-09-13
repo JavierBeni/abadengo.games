@@ -14,7 +14,7 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = () => {
-    const { i18n, t } = useTranslation();
+    const { i18n } = useTranslation();
     // const { mediaIsPhone } = useMediaDevices();
     // const navigate = useNavigate();
     const { changeLanguage } = usePersistedLanguage();

@@ -3,6 +3,7 @@ import { CatalogContainer, CatalogLayout } from './styles';
 import Card from '../../components/Card';
 import Filters from '../../components/Filters';
 import NoProducts from '../../components/NoProducts';
+import Loading from '../../components/Loading';
 import axios from 'axios';
 import { ItemProps } from '../../data/data';
 import { REACT_APP_URL_BE } from '../../data/constants';
@@ -10,10 +11,6 @@ import { useParams } from 'react-router-dom';
 import useMediaDevices from '../../hooks/useMediaDevices';
 
 const Catalog: React.FC = () => {
-
-  const handleAddToCart = (productId: number) => {
-    console.log(`Producto ${productId} añadido al carrito.`);
-  };
   const params = useParams();
   const { mediaIsPhone } = useMediaDevices();
   const [products, setProducts] = useState<ItemProps[]>();
@@ -54,7 +51,7 @@ const Catalog: React.FC = () => {
   useEffect(() => {
     if (filterSet === 'All' && filterType === 'All' && filterGame === 'All') setProductsShown(products);
     if (filterType !== 'All') setProductsShown(products?.filter(p => p.type === filterType));
-    const filterSetValue = typeof filterSet === 'string' ? filterSet : (filterSet as any).set;
+    const filterSetValue = filterSet;
     if (filterSetValue !== 'All') setProductsShown(products?.filter(p => p.set === filterSetValue));
     if (filterGame !== 'All') setProductsShown(products?.filter(p => p.game === filterGame));
   }

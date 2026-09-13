@@ -20,9 +20,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
 import { REACT_APP_URL_BE } from "../../data/constants";
-import Loading from "../../components/Loading";
-import Link from "../../components/Link";
-import { useTranslation } from "react-i18next";
 
 
 const ItemDetails: React.FC = () => {
