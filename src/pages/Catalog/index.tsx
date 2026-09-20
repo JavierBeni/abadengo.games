@@ -16,7 +16,7 @@ const Catalog: React.FC = () => {
   const [products, setProducts] = useState<ItemProps[]>();
   const [productsShown, setProductsShown] = useState<ItemProps[]>();
   const [games, setGames] = useState<string[]>([]);
-  const [sets, setSets] = useState<(string | { set: string; game: string })[]>([]);
+  const [sets, setSets] = useState<string[]>([]);
   const [types, setTypes] = useState<string[]>([]);
   const [filterGame, setFilterGame] = useState<string>("All");
   const [filterSet, setFilterSet] = useState<string>("All");
@@ -28,18 +28,7 @@ const Catalog: React.FC = () => {
         setProducts(response.data);
         setProductsShown(response.data);
         setGames(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.game))]);
-        
-        // Crear array de sets con información de game
-        const setsWithGame = Array.from(
-          new Map(
-            response.data.map((p: ItemProps) => [
-              p.set,
-              { set: p.set, game: p.game }
-            ])
-          ).values()
-        ) as { set: string; game: string }[];
-        
-        setSets(["All", ...setsWithGame]);
+        setSets(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.set))]);
         setTypes(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.type))]);
       })
       .catch(error => {
@@ -49,13 +38,13 @@ const Catalog: React.FC = () => {
 
 
   useEffect(() => {
-    if (filterSet === 'All' && filterType === 'All' && filterGame === 'All') setProductsShown(products);
-    if (filterType !== 'All') setProductsShown(products?.filter(p => p.type === filterType));
-    const filterSetValue = filterSet;
-    if (filterSetValue !== 'All') setProductsShown(products?.filter(p => p.set === filterSetValue));
-    if (filterGame !== 'All') setProductsShown(products?.filter(p => p.game === filterGame));
+    let filtered = products;
+    if (filterGame !== 'All') filtered = filtered?.filter(p => p.game === filterGame);
+    if (filterSet !== 'All') filtered = filtered?.filter(p => p.set === filterSet);
+    if (filterType !== 'All') filtered = filtered?.filter(p => p.type === filterType);
+    setProductsShown(filtered);
   }
-  , [filterSet, filterType, products]);
+  , [filterGame, filterSet, filterType, products]);
 
   return (
     <CatalogLayout>

@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const CatalogLayout = styled.div`
   display: flex;
+  box-sizing: border-box;
+  width: 100%;
   padding: 30px;
   gap: 30px;
 
