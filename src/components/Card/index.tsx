@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardContainer, Title, Price, Actions, Image, PriceSeparator } from "./styles";
 import React from "react";
@@ -24,6 +24,7 @@ const Card: React.FC<CardProps> = ({
   status,
   detailLink,
 }) => {
+  const [eurRate, setEurRate] = useState(4.3);
   const navigate = useNavigate();
 
   const handleCardClick = useCallback(() => {
@@ -34,13 +35,31 @@ const Card: React.FC<CardProps> = ({
     return image && isValidImageUrl(image) ? image : DEFAULT_IMAGE;
   }, [image]);
 
+  useEffect(() => {
+    const fetchEuroRate = async () => {
+      try {
+        const response = await fetch('https://nbp.pl');
+        if (!response.ok) 
+          throw new Error(`Error en la petición: ${response.status}`);
+        const data = await response.json();
+        const midRate = data.rates[0].mid;
+        
+        setEurRate(midRate);
+      } catch (err) {
+        setEurRate(4.3);
+      }
+    };
+
+    fetchEuroRate();
+  }, []);
+
   return (
     <CardContainer onClick={handleCardClick}>
       <Title>{truncateText(title, 35)}</Title>
       <Image src={validatedImage} alt={title} loading="lazy" />
       {price ? (
         <Price disabled={status}>
-          {price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(price * 0.24)} €
+          {price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(price * (1/eurRate))} €
         </Price>
       ) : null}
       <Actions>
