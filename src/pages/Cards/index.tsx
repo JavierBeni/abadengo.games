@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CardsContainer } from './styles';
-// import { CardTable } from '../../components/CardTable';
+import { CardTable } from '../../components/CardTable';
+import axios from 'axios';
+import { REACT_APP_URL_BE } from '../../data/constants';
+import { CardProps } from '../../data/data';
 
 
 const Cards: React.FC = () => {
@@ -13,11 +16,22 @@ const Cards: React.FC = () => {
   //   { name: "Carta 5", number: 3321, expansion: "Set q", year: 2002, condition: "Played", language: "Inglés", rarity: "Rare", quantity: 3, price: 15, comments: "Edición limitada" },
   //   { name: "Carta 6", number: 76, expansion: "Set e", year: 2027, condition: "Played", language: "Francés", rarity: "Ultra Rare", quantity: 3, price: 15, comments: "Edición limitada" },
   // ];
+  const [cards, setCards] = useState<CardProps[]>([]);
+
+  useEffect(() => {
+
+    axios.get(`${REACT_APP_URL_BE}cards/available`)  // Asumiendo que el backend corre en localhost:5000
+      .then(response => {
+        setCards(response.data);
+      })
+      .catch(error => {
+        console.error('🔴 Error when we try to GET the products:', error);
+      });
+  }, []);
 
   return (
     <CardsContainer>
-      {/* <CardTable data={mockData} /> */}
-      Working on this page.
+      <CardTable data={cards} />
     </CardsContainer>
   );
 };

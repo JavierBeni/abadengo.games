@@ -47,13 +47,6 @@ const DropdownComponent: React.FC<DropdownProps> = ({
     [handleClose]
   );
 
-  useClickOutside(dropdownRef, handleClose);
-
-  // Si no hay elementos válidos, renderizar solo el botón
-  if (validElements.length === 0) {
-    return <DropdownContainer ref={dropdownRef}>{button}</DropdownContainer>;
-  }
-
   const handleElementClick = useCallback(
     (action: () => void) => {
       try {
@@ -66,6 +59,13 @@ const DropdownComponent: React.FC<DropdownProps> = ({
     },
     [handleClose]
   );
+
+  useClickOutside(dropdownRef, handleClose);
+
+  // Si no hay elementos válidos, renderizar solo el botón
+  if (validElements.length === 0) {
+    return <DropdownContainer ref={dropdownRef}>{button}</DropdownContainer>;
+  }
 
   return (
     <div ref={dropdownRef}>

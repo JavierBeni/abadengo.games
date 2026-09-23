@@ -6,7 +6,6 @@ export const FiltersWrapper = styled.div`
   padding: 0 10px 10px 10px;
   border-radius: 8px;
   height: fit-content;
-
   .filteroption {
     padding: 2px 10px;
     margin: 3px 0;

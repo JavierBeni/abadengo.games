@@ -1,7 +1,20 @@
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 // import Button from "../../components/Button"; // Reutilizamos el botón que ya creaste
 // import { useStore } from "../../store";
-import { ItemDetailsWrapper, ItemInfo, ItemName, ItemPrice, ItemDescription } from "./styles";
+import {
+  ItemDetailsWrapper,
+  ItemGallery,
+  ItemInfo,
+  ItemName,
+  ItemPrice,
+  ItemDescription,
+  ItemEyebrow,
+  ItemMeta,
+  Availability,
+  DetailSection,
+  PriceSeparator,
+  PriceValue,
+} from "./styles";
 import { ItemProps } from '../../data/data';
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -11,20 +24,24 @@ import { REACT_APP_URL_BE } from "../../data/constants";
 
 const ItemDetails: React.FC = () => {
   
-  const params = useParams();
+  const { game, id } = useParams<{ game: string; id: string }>();
 
   const [product, setProduct] = useState<ItemProps>();
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios.get(`${REACT_APP_URL_BE}products/${params._id}`)
+    if (!game || !id) return;
+
+    axios.get(`${REACT_APP_URL_BE}product/${game}/${id}`)
       .then(response => {
         setProduct(response.data);
-        console.log(response.data.image);
       })
       .catch(error => {
         console.error('🔴 Error when we try to GET the products:', error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [game, id]);
 
   // const addToCart = useStore((state) => state.addItem);
   // const handleAddToCart = () => {
@@ -33,18 +50,49 @@ const ItemDetails: React.FC = () => {
 
   return (
     <ItemDetailsWrapper>
-      <ImageCarousel images={product?.image || []} />
-      {/* <ItemImage src={product?.image[0]} alt={product?.image[0]} /> */}
-      <ItemInfo>
-        <ItemName>{product?.name}</ItemName>
-        <ItemDescription>{product?.description}</ItemDescription>
-      </ItemInfo>
-     <ItemInfo>
-        {product?.comment && <ItemName>Seller comment</ItemName>}
-        {product?.comment && <ItemDescription>{product?.comment}</ItemDescription>}
-        <ItemPrice disabled={product ? product.status : false}><ItemName>Price</ItemName>{product?.price.toFixed(2)}zl</ItemPrice>
-        {/* <Button label={item?.status ? "Add to Cart" : "No stock"} action={handleAddToCart>} disabled={!item?.status}/> */}
-      </ItemInfo>
+      {isLoading ? (
+        <ItemInfo>Loading product...</ItemInfo>
+      ) : product ? (
+        <>
+          <ItemGallery>
+            <ImageCarousel
+              slides={product.image.map((image, index) => ({
+                image,
+                id: `${product._id}-${index}`,
+              }))}
+            />
+          </ItemGallery>
+          <ItemInfo>
+            <ItemEyebrow>{product.game} / {product.set}</ItemEyebrow>
+            <ItemName>{product.name}</ItemName>
+            <Availability available={product.status}>
+              {product.status ? "Available now" : "Currently unavailable"}
+            </Availability>
+            <ItemMeta>
+              <span>Collection</span>
+              <strong>{product.set}</strong>
+            </ItemMeta>
+            <DetailSection>
+              <ItemEyebrow>About this item</ItemEyebrow>
+              <ItemDescription>{product.description}</ItemDescription>
+            </DetailSection>
+            {product.comment && (
+              <DetailSection>
+                <ItemEyebrow>Seller note</ItemEyebrow>
+                <ItemDescription>{product.comment}</ItemDescription>
+              </DetailSection>
+            )}
+            <ItemPrice available={product.status}>
+              <span>Price</span>
+              <PriceValue>
+                {product.price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(product.price * 0.24)} <small>€</small>
+              </PriceValue>
+            </ItemPrice>
+          </ItemInfo>
+        </>
+      ) : (
+        <ItemInfo>We couldn't find this product.</ItemInfo>
+      )}
     </ItemDetailsWrapper>
   );
 };

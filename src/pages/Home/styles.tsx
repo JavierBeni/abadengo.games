@@ -18,6 +18,21 @@ export const Main = styled.main`
   & > h2 {
     margin: 0 0 20px 0;
   }
+
+  @media (max-width: 800px) {
+    padding: 0;
+    gap: 10px;
+    width: 100%;
+    & > h1 {
+      margin: 20px 10px 0 10px;
+      text-align: center;
+    }
+
+    & > h2 {
+      margin: 0 10px 20px;
+      text-align: center;
+    }
+  }
 `;
 
 
@@ -25,27 +40,13 @@ export const ImageCarouselWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 
   & > div {
     @media (min-width: ${({ theme }) => theme.media.desktop}) {
       width: auto;
     }
-  }
-`;
-
-export const ProductsSection = styled.div`
-  padding: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 400px;
-
-  @media (max-width: 800px) {
-    justify-content: center;
-    padding: 5px;
   }
 `;
 

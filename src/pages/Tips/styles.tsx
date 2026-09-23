@@ -6,6 +6,11 @@ export const Container = styled.div`
   padding: 20px;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    margin: 20px 16px;
+    padding: 16px;
+  }
 `;
 
 export const Title = styled.h1`
@@ -41,7 +46,7 @@ export const Answer = styled.div<{ isOpen: boolean }>`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.secondary};
   line-height: 1.6;
-  max-height: ${({ isOpen }) => (isOpen ? '200px' : '0')};
+  max-height: ${({ isOpen }) => (isOpen ? '1000px' : '0')};
   overflow: hidden;
   transition: max-height 0.5s ease-in-out;
 `;

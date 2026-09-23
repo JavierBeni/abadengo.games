@@ -4,8 +4,14 @@ export const Container = styled.div`
   max-width: 950px;
   margin: 20px auto;
   padding: 20px;
+  box-sizing: border-box;
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   border-radius: 8px;
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    margin: 20px 16px;
+    padding: 16px;
+  }
 `;
 
 export const Title = styled.h1`

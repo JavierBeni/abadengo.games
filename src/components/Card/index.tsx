@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CardContainer, Title, Price, Actions, Image, PriceSeparator } from "./styles";
 import React from "react";
 import { isValidImageUrl } from "../../utils/validators";
+import { truncateText } from "../../utils";
 
 interface CardProps {
   title: string;
@@ -54,7 +55,7 @@ const Card: React.FC<CardProps> = ({
 
   return (
     <CardContainer onClick={handleCardClick}>
-      <Title>{title}</Title>
+      <Title>{truncateText(title, 35)}</Title>
       <Image src={validatedImage} alt={title} loading="lazy" />
       {price ? (
         <Price disabled={status}>

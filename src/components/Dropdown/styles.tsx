@@ -11,26 +11,32 @@ export const DropdownContainer = styled.div`
     border: none;
     min-height: 25px;
     font-size: 1.5rem;
+    color: ${() => getColor('white')};
   }
 `;
 
 export const DropdownButton = styled.button`
-    margin-top: 5px;
-    width: 100%;
-    border: none;
-    background-color: ${() => getColor('darkprimary')};
-    border: 1px solid ${() => getColor('darkprimary')};
-    transition: border 0.5s, color 0.5s;
-    border-radius: 5px;
-    padding: 10px;
+  margin-top: 5px;
+  width: 100%;
+  border: none;
+  background-color: ${() => getColor('darkprimary')};
+  border: 1px solid ${() => getColor('darkprimary')};
+  color: ${() => getColor('white')};
+  transition: border 0.5s, color 0.5s;
+  border-radius: 5px;
+  padding: 10px;
 
-    &:hover {
-      background-color: ${() => getColor('primary')};
-      color: ${() => getColor('white')};
-    }
-    &.active {
-      border: 1px solid ${() => getColor('secondary')};
-    }
+  &:hover {
+    background-color: ${() => getColor('primary')};
+    color: ${() => getColor('white')};
+  }
+  &.active {
+    border: 1px solid ${() => getColor('secondary')};
+  }
+
+  @media (max-width: ${({ theme }) => theme.media.mobile}) {
+    color: white;
+  }
 `;
 
 export const DropdownMenu = styled.div<{ orientation: string | undefined }>`

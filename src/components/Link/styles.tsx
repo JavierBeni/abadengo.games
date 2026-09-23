@@ -15,6 +15,10 @@ import { getColor } from '../../theme';
   transition: border-color 0.5s, color 0.5s; /* Transiciones */
   text-decoration: none !important;
 
+  @media (max-width: ${({ theme }) => theme.media.tablet}) {
+    padding: 5px 15px;
+  }
+
   &:hover {
     border-color: ${({ disabled }) => (disabled ? '#ccc' : getColor('secondary'))};
     color: white;

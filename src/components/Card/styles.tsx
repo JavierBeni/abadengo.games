@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  height: auto;
-  max-height: 300px;
+  height: 350px;
   width: 225px;
   border: 1px solid ${({ theme }) => theme.colors.lightprimary};
   border-radius: 8px;
@@ -11,8 +10,9 @@ export const CardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  box-sizing: border-box;
   background-color: ${({ theme }) => theme.colors.background};
-  
+  cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 
   &:hover {
@@ -21,41 +21,44 @@ export const CardContainer = styled.div`
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    // width: -webkit-fill-available;
-    width: 140px;
+    width: 100%;
+    height: 330px;
   }
 `;
 
 export const Image = styled.img`
   width: 100%;
-  max-height: 180px;
-  object-fit: cover;
+  height: 180px;
+  flex-shrink: 0;
   border-radius: 8px;
   object-fit: contain;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    max-height: 200px;
+    height: 160px;
   }
 `;
 
 export const Title = styled.h3`
   height: 50px;
+  flex-shrink: 0;
   font-size: 1rem;
+  line-height: 1.25;
   color: ${({ theme }) => theme.colors.secondary};
   margin: 0;
   text-align: center;
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    // font-size: 1.5rem;
-    height: auto;
+    height: 50px;
   }
 `;
 
 export const Price = styled.p<{ disabled: boolean }>`
+  margin-top: auto;
+  margin-bottom: 4px;
   font-size: 1rem;
   font-weight: bold;
   color: ${({ theme, disabled }) => disabled ? theme.colors.lightprimary : theme.colors.grey};
   ${({ disabled }) => (disabled ? '#666' : '#fff')};
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    // font-size: 1.5rem;
+    margin-bottom: 4px;
   }
 `;
 

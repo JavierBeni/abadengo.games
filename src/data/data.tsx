@@ -17,7 +17,20 @@ export interface ItemProps {
   status: boolean,
   description: string,
   set: string,
-  comment: string,
+  comment: string
+}
+
+export interface CardProps {
+  name: string;
+  number: number;
+  expansion: string;
+  year: number;
+  condition: string;
+  language: string;
+  rarity: string;
+  quantity: number;
+  price: number;
+  comments: string;
 }
 
 export const mockProducts = [
@@ -136,22 +149,33 @@ export const mockProducts = [
 
 /*
 {
-  "id": {
-      "$numberInt": "14"
-  },
   "game": "pokemon",
-  "name": "Blisters Twilight Masquarade",
+  "name": "Booster Box Surging Sparks",
   "image": [
-      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-kingdra.jpg",
-      "https://files.rebel.pl/products/1065/5755/_2022449/pokemon-tcg-scarlet-and-violet-twilight-masquarade-premium-checklane-blister-porygon.jpg"
+      "https://jj6zmjq3aaaqkbhd.public.blob.vercel-storage.com/ssbb-FMNqDONE2JCBJRvtzaoqh0YDGBY41C.webp"
   ],
   "price": {
-      "$numberInt": "25"
+      "$numberInt": "749"
   },
   "status": true,
-  "description": "• 3cards -> 29zl\n• Several blisters -> discount",
-  "set": "Twilight Masquarade",
-  "comment": "Don't open just one booster :/. Open more! :D Buy several blister where you will optein exclusive foil cards."
+  "description": "• 36 boosters of Surging Sparks\n• 360 pokemon cards, 36 codes, 36 energies",
+  "set": "Surging Sparks",
+  "comment": "Try to find the hidden booty Pikachu!"
+}
+
+{ 
+  "name": "Galarian Zapdos",
+  "number": 283,
+  "expansion": "SWSH Black Star Promos",
+  "year": 2023,
+  "condition": "Near Mint",
+  "language": "English",
+  "rarity": "Promo",
+  "quantity": 1,
+  "price": 5,
+  "reverse": false,
+  "holo": false,
+  "comments": ""
 }
 */
 

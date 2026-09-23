@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { persist } from "zustand/middleware";
 
 
 export interface CartItem {
@@ -19,33 +20,37 @@ export interface StoreState {
   modifyLanguage: (lang: string) => void;
 }
 
-export const useStore = create<StoreState>((set) => ({
-  cart: {
-    items: [],
-    total: 0,
-  },
-  language: "en",
-  addItem: (item) =>
-    set((state) => {
-      const updatedItems = [...state.cart.items, item];
-      const updatedTotal = updatedItems.reduce((sum, currentItem) => sum + currentItem.price, 0);
-      return { cart: { items: updatedItems, total: updatedTotal } };
-    }),
-  removeItem: (itemId) =>
-    set((state) => {
-      const updatedItems = state.cart.items.filter((item) => item.id !== itemId);
-      const updatedTotal = updatedItems.reduce((sum, currentItem) => sum + currentItem.price, 0);
-      return { cart: { items: updatedItems, total: updatedTotal } };
-    }),
-  clearCart: () =>
-    set(() => ({
+export const useStore = create<StoreState>()(
+  persist(
+    (set) => ({
       cart: {
         items: [],
         total: 0,
       },
-    })),
-  modifyLanguage: (lang) =>
-    set(() => ({
-      language: lang,
-    })),
-}));
+      language: "en",
+      addItem: (item) =>
+        set((state) => {
+          const updatedItems = [...state.cart.items, item];
+          const updatedTotal = updatedItems.reduce((sum, currentItem) => sum + currentItem.price, 0);
+          return { cart: { items: updatedItems, total: updatedTotal } };
+        }),
+      removeItem: (itemId) =>
+        set((state) => {
+          const updatedItems = state.cart.items.filter((item) => item.id !== itemId);
+          const updatedTotal = updatedItems.reduce((sum, currentItem) => sum + currentItem.price, 0);
+          return { cart: { items: updatedItems, total: updatedTotal } };
+        }),
+      clearCart: () =>
+        set(() => ({
+          cart: {
+            items: [],
+            total: 0,
+          },
+        })),
+      modifyLanguage: (lang) => set({ language: lang }),
+    }),
+    {
+      name: "store-storage", // Nombre en localStorage
+    }
+  )
+);

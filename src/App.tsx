@@ -13,9 +13,18 @@ import {
   ItemPage,
   Tips
 } from './pages'
+import { useEffect, useState } from 'react';
+import { useStore } from './store';
 
 
 function App() {
+
+  const [, setForceRender] = useState(0);
+  const language = useStore((state) => state.language);
+  
+  useEffect(() => {
+    setForceRender((prev) => prev + 1);
+  }, [language]);
   return (
     <Router>
       <Container>
@@ -28,8 +37,8 @@ function App() {
             <Route path="/catalog/:game" element={<CatalogPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/product/:game/:id" element={<ItemPage />} />
             <Route path="/products/:id" element={<ItemPage />} />
-            {/* <Route path="/products/:game/:id" element={<ItemPage />} /> */}
             <Route path="/cards" element={<Cards />} />
             <Route path="/tips" element={<Tips />} />
           </Routes>
@@ -39,5 +48,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;

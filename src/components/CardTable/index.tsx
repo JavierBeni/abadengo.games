@@ -10,7 +10,7 @@ import {
 import { TableWrapper } from "./styles";
 import Button from "../Button";
 import { t } from "i18next";
-import { useStore } from "../../store";
+// import { useStore } from "../../store";
 import useMediaDevices from "../../hooks/useMediaDevices";
 
 interface CardData {
@@ -31,7 +31,7 @@ interface CardTableProps {
 }
 
 const CardTableComponent = ({ data }: CardTableProps) => {
-  const { language } = useStore();
+  // const { language } = useStore();
   const { mediaIsPhone } = useMediaDevices();
 
   const columns = useMemo<ColumnDef<CardData>[]>(
@@ -57,7 +57,7 @@ const CardTableComponent = ({ data }: CardTableProps) => {
             { accessorKey: "comments", header: t("tableComments") },
           ];
     },
-    [language, mediaIsPhone]
+    [mediaIsPhone]
   );
 
   const table = useReactTable({
