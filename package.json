@@ -22,7 +22,7 @@
     "react-router-dom": "^7.1.0",
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^6.1.13",
+    "styled-components": "^6.5.3",
     "zustand": "^5.0.2"
   },
   "devDependencies": {
