@@ -14,6 +14,7 @@ import {
   DetailSection,
   PriceSeparator,
   PriceValue,
+  ContactWhatsapp
 } from "./styles";
 import { ItemProps } from '../../data/data';
 import axios from "axios";
@@ -68,6 +69,11 @@ const ItemDetails: React.FC = () => {
             <Availability available={product.status}>
               {product.status ? "Available now" : "Currently unavailable"}
             </Availability>
+            <ContactWhatsapp
+              available={product.status}
+              onClick={() => window.open(`https://wa.me/48729211814?text=Hello!%20I%20am%20interested%20in%20the%20item%20${product.name}%20from%20your%20store.`, '_blank')}>
+              {product.status ? "Contact by WhatsApp Web" : "Currently unavailable"}
+            </ContactWhatsapp>
             <ItemMeta>
               <span>Collection</span>
               <strong>{product.set}</strong>

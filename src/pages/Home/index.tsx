@@ -8,6 +8,8 @@ import pokemon from '../../assets/pokemon_tcg.webp';
 import riftbound from '../../assets/riftbound.webp';
 import dragon_ball from '../../assets/dragon_ball.webp';
 import naruto from '../../assets/naruto.webp';
+import fairytail from '../../assets/fairytail.webp';
+import azuki from '../../assets/azuki.webp';
 
 import { useMediaDevices } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
@@ -23,6 +25,8 @@ const Home: React.FC = () => {
     {image: riftbound, action: () => navigate("/catalog/riftbound")},
     {image: dragon_ball, action: () => navigate("/catalog/dragonball")},
     {image: naruto, action: () => navigate("/catalog/naruto")},
+    {image: azuki, action: () => navigate("/catalog/azuki")},
+    {image: fairytail, action: () => navigate("/catalog/fairytail")}
   ];
 
   return (
