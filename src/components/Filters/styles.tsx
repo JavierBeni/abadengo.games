@@ -11,11 +11,11 @@ export const FiltersWrapper = styled.div`
     margin: 3px 0;
     border: 1px solid ${({ theme }) => theme.colors.darksecondary};
     border-radius: 8px;
-    color: ${({ theme }) => theme.colors.darksecondary};
+    color: ${({ theme }) => theme.colors.text};
     transition: color 0.3s;
     cursor: pointer;
     &:hover {
-      color: ${({ theme }) => theme.colors.lightsecondary}
+      color: ${({ theme }) => theme.colors.lightprimary}
     }
 
     &.selected {

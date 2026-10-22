@@ -89,6 +89,15 @@ export const Availability = styled.span<{ available: boolean }>`
   font-weight: 700;
 `;
 
+export const ContactWhatsapp = styled.span<{ available: boolean }>`
+  padding: 7px 11px;
+  border-radius: 999px;
+  background: ${({ theme, available }) => available ? theme.colors.green : theme.colors.tertiary};
+  color: ${({ theme, available }) => available ? theme.colors.black : theme.colors.white};
+  font-size: 0.78rem;
+  font-weight: 700;
+`;
+
 export const ItemMeta = styled.div`
   display: flex;
   justify-content: space-between;

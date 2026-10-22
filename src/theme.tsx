@@ -13,6 +13,7 @@ export const theme = {
       tertiary: '#bb0000',
       text: '#00aaff',
       white: 'white',
+      green: '#00dd00',
     },
     media: {
       mobile: '768px',
