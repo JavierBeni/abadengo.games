@@ -1,9 +1,13 @@
 import { Container, Title, Section, SectionTitle, SectionContent, Text } from "./styles";
+import { useTranslation } from "react-i18next";
+import Seo from "../../components/Seo";
 
 const ContactPage: React.FC = () => {
+    const { t } = useTranslation();
     return (
       <Container>
-        <Title>Contact</Title>
+        <Seo title={t("seoContactTitle")} description={t("seoContactDescription")} />
+        <Title>{t("titleContact")}</Title>
         <div>
           <div>
             <Section>

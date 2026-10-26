@@ -7,6 +7,7 @@ import { StyledHeader, MenuOptions, IconWrapper, UserWrapper } from "./styles"
 import aglogo from "../../assets/ag-logo.webp"
 // import CartCounter from "../CartCounter";
 import { usePersistedLanguage } from "../../hooks";
+import { localizedPath } from "../../utils/localizedRoutes";
 // import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = () => {
 
     return (
     <StyledHeader>
-        <Logo src={aglogo} href="/" alt="abadengoGames"/>
+        <Logo src={aglogo} href={localizedPath("/", i18n.language)} alt="abadengoGames"/>
         {
           // mediaIsPhone ?
           //   <Dropdown button={<>Menu</>} elements={menuKids} /> :

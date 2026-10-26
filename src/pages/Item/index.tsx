@@ -21,11 +21,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
 import { REACT_APP_URL_BE } from "../../data/constants";
+import Seo from "../../components/Seo";
+import { useTranslation } from "react-i18next";
 
 
 const ItemDetails: React.FC = () => {
   
   const { game, id } = useParams<{ game: string; id: string }>();
+  const { t } = useTranslation();
 
   const [product, setProduct] = useState<ItemProps>();
   const [isLoading, setIsLoading] = useState(true);
@@ -55,6 +58,11 @@ const ItemDetails: React.FC = () => {
         <ItemInfo>Loading product...</ItemInfo>
       ) : product ? (
         <>
+          <Seo
+            title={t('seoProductTitle', { product: product.name, game: product.game })}
+            description={product.description || t('seoProductDescription', { product: product.name, game: product.game })}
+            image={product.image[0]}
+          />
           <ItemGallery>
             <ImageCarousel
               slides={product.image.map((image, index) => ({
@@ -73,7 +81,7 @@ const ItemDetails: React.FC = () => {
               <ContactWhatsapp
                 available={product.status}
                 onClick={() => window.open(`https://wa.me/48729211814?text=Hello!%20I%20am%20interested%20in%20the%20item%20${product.name}%20from%20your%20store.`, '_blank')}>
-                {product.status ? "Contact by WhatsApp Web" : "Currently unavailable"}
+                {product.status ? "Contact by WhatsApp" : "Currently unavailable"}
               </ContactWhatsapp>
             </div>
             <ItemMeta>
