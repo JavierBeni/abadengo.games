@@ -3,6 +3,7 @@ import { useStore , CartItem} from '../../store'; // Tu store de Zustand
 import { Container, Table, TableRow, TableHeader, TableCell, Summary, SummaryRow, BoldText, RemoveButton } from './styles';
 import { FiTrash2 } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
+import Seo from '../../components/Seo';
 
 const CartPage: React.FC = () => {
   const {cart, removeItem} = useStore();
@@ -13,6 +14,7 @@ const CartPage: React.FC = () => {
 
   return (
     <Container>
+      <Seo title={t("seoCartTitle")} description={t("seoCartDescription")} noIndex />
       <h2>{t("titleCart")}</h2>
       {cart.items.length === 0 ? (
         <p>{t("textCartEmpty")}</p>

@@ -1,19 +1,19 @@
-import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useStore } from "../store";
+import { isSupportedLanguage, localizedPath } from "../utils/localizedRoutes";
 
 const usePersistedLanguage = () => {
   const { i18n } = useTranslation();
-  const { language, modifyLanguage } = useStore();
-  useEffect(() => {
-    if (language && language !== i18n.language) {
-      i18n.changeLanguage(language);
-    }
-  }, [i18n, language]);
+  const modifyLanguage = useStore((state) => state.modifyLanguage);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    if (!isSupportedLanguage(lng)) return;
+    void i18n.changeLanguage(lng);
     modifyLanguage(lng);
+    navigate(localizedPath(`${location.pathname}${location.search}${location.hash}`, lng));
   };
 
   return { i18n, changeLanguage };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FiltersWrapper } from "./styles";
 import { useTranslation } from 'react-i18next';
 
@@ -6,15 +6,21 @@ interface FiltersProps {
     games?: string[];
     sets: string[];
     types: string[];
+    routeGame?: string;
     setFilterGame?: React.Dispatch<React.SetStateAction<string>>;
     setFilterSet: React.Dispatch<React.SetStateAction<string>>;
     setFilterType: React.Dispatch<React.SetStateAction<string>>;
   }
 
-const Filters: React.FC<FiltersProps> = ({ games, sets, types, setFilterGame, setFilterSet, setFilterType }) => {
-    const [selectedFilter, setSelectedFilter] = useState<string>("");
+const Filters: React.FC<FiltersProps> = ({ games, sets, types, routeGame, setFilterGame, setFilterSet, setFilterType }) => {
+    const [selectedFilter, setSelectedFilter] = useState<string>(routeGame ?? "");
     const { t } = useTranslation();
     const selected = (s: string) => s === selectedFilter ? true : false;
+
+    useEffect(() => {
+      if (routeGame) setSelectedFilter(routeGame);
+    }, [routeGame]);
+
     return (
       <FiltersWrapper>
         <h3>Filters</h3>

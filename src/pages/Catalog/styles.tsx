@@ -45,3 +45,14 @@ export const CatalogWrapper = styled.div`
   display: flex;
   margin: 20px;
 `;
+
+export const CatalogHeading = styled.h1`
+  margin: 0;
+  padding: 16px 30px 0;
+  font-size: 1.8rem;
+  line-height: 1.2;
+
+  @media (max-width: 800px) {
+    padding: 12px 16px 0;
+  }
+`;

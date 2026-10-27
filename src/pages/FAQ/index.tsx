@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Title, Question, Answer, AccordionItem, Arrow } from "./styles";
+import Seo from "../../components/Seo";
 
 
 const FAQPage: React.FC = () => {
@@ -48,6 +49,7 @@ const FAQPage: React.FC = () => {
   
     return (
       <Container>
+        <Seo title={t("seoFaqTitle")} description={t("seoFaqDescription")} />
         <Title>{t("linkFAQ")}</Title>
         {faqs.map((faq, index) => (
           <AccordionItem key={index}>

@@ -38,7 +38,7 @@ const Card: React.FC<CardProps> = ({
   useEffect(() => {
     const fetchEuroRate = async () => {
       try {
-        const response = await fetch('https://nbp.pl');
+        const response = await fetch('https://api.nbp.pl/api/exchangerates/rates/a/eur/');
         if (!response.ok) 
           throw new Error(`Error en la petición: ${response.status}`);
         const data = await response.json();

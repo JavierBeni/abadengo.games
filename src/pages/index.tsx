@@ -5,7 +5,6 @@ import CatalogPage from "./Catalog";
 import HomePage from "./Home";
 import FAQPage from "./FAQ";
 import ItemPage from "./Item";
-import Cards from "./Cards";
 import Tips from "./Tips";
 
 export {
@@ -16,6 +15,5 @@ export {
   HomePage,
   FAQPage,
   ItemPage,
-  Cards,
   Tips
 };

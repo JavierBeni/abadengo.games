@@ -68,7 +68,7 @@ export const ItemEyebrow = styled.span`
   text-transform: uppercase;
 `;
 
-export const ItemName = styled.h2`
+export const ItemName = styled.h1`
   margin: 10px 0 14px;
   color: ${({ theme }) => theme.colors.lightsecondary};
   font-size: clamp(1.6rem, 3vw, 2.5rem);
