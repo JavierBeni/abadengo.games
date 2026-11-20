@@ -21,11 +21,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ImageCarousel from "../../components/Carrusel";
 import { REACT_APP_URL_BE } from "../../data/constants";
+import { useStore } from "../../store";
 
 
 const ItemDetails: React.FC = () => {
   
   const { game, id } = useParams<{ game: string; id: string }>();
+  const eurRate = useStore((state) => state.eurRate);
 
   const [product, setProduct] = useState<ItemProps>();
   const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +95,7 @@ const ItemDetails: React.FC = () => {
             <ItemPrice available={product.status}>
               <span>Price</span>
               <PriceValue>
-                {product.price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(product.price * 0.24)} <small>€</small>
+                {product.price} zl <PriceSeparator>/</PriceSeparator> {Math.ceil(product.price / eurRate)} <small>€</small>
               </PriceValue>
             </ItemPrice>
           </ItemInfo>

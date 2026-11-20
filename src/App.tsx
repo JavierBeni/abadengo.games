@@ -21,6 +21,11 @@ function App() {
 
   const [, setForceRender] = useState(0);
   const language = useStore((state) => state.language);
+  const fetchEurRate = useStore((state) => state.fetchEurRate);
+
+  useEffect(() => {
+    void fetchEurRate();
+  }, [fetchEurRate]);
   
   useEffect(() => {
     setForceRender((prev) => prev + 1);
