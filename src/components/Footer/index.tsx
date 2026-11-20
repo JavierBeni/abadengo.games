@@ -6,22 +6,23 @@ import Link from "../Link";
 import { StyledFooter } from "./styles";
 import { useTranslation } from "react-i18next";
 import React from "react";
+import { localizedPath } from "../../utils/localizedRoutes";
 
 const FooterComponent: React.FC = () => {
   const { mediaIsPhone } = useMediaDevices();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const dropdownElements = useMemo(
     () => [
-      { id: "shipment", action: () => navigate("/faq"), label: t("linkShipment") },
-      { id: "pay", action: () => navigate("/faq"), label: t("linkPay") },
-      { id: "about", action: () => navigate("/aboutus"), label: t("linkAboutUs") },
-      { id: "contact", action: () => navigate("/contact"), label: t("linkContact") },
-      { id: "faq", action: () => navigate("/faq"), label: t("linkFAQ") },
-      { id: "tips", action: () => navigate("/tips"), label: t("linkTips") },
+      { id: "shipment", action: () => navigate(localizedPath("/faq", i18n.language)), label: t("linkShipment") },
+      { id: "pay", action: () => navigate(localizedPath("/faq", i18n.language)), label: t("linkPay") },
+      { id: "about", action: () => navigate(localizedPath("/aboutus", i18n.language)), label: t("linkAboutUs") },
+      { id: "contact", action: () => navigate(localizedPath("/contact", i18n.language)), label: t("linkContact") },
+      { id: "faq", action: () => navigate(localizedPath("/faq", i18n.language)), label: t("linkFAQ") },
+      { id: "tips", action: () => navigate(localizedPath("/tips", i18n.language)), label: t("linkTips") },
     ],
-    [navigate, t]
+    [i18n.language, navigate, t]
   );
 
   return (

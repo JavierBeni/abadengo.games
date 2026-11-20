@@ -1,6 +1,8 @@
 import React from "react";
 import { StyledLink } from "./styles";
 import { isValidHref } from "../../utils/validators";
+import { useTranslation } from "react-i18next";
+import { localizedPath } from "../../utils/localizedRoutes";
 
 interface LinkProps {
     disabled?: boolean;
@@ -11,9 +13,13 @@ interface LinkProps {
 
 const Link: React.FC<LinkProps> = ({ label, href, disabled = false, icon }) => {
     const validHref = !disabled && isValidHref(href) ? href : undefined;
+    const { i18n } = useTranslation();
+    const localizedHref = validHref?.startsWith("/") && !validHref.startsWith("//")
+      ? localizedPath(validHref, i18n.language)
+      : validHref;
     
     return (
-      <StyledLink href={validHref} disabled={disabled}>
+      <StyledLink href={localizedHref} disabled={disabled}>
         {icon && <span>{icon}</span>}
         {label}
       </StyledLink>

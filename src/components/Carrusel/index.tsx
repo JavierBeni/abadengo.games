@@ -1,9 +1,12 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useMemo, useCallback } from "react";
-import Slider from "react-slick";
 import { SliderWrapper } from "./styles";
 import React from "react";
+import SliderComponent from "react-slick";
+
+const Slider = ((SliderComponent as any).default || SliderComponent) as any;
+
 
 type SlideProps = {
   image: string;

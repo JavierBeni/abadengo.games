@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CatalogContainer, CatalogLayout } from './styles';
+import { CatalogContainer, CatalogHeading, CatalogLayout } from './styles';
 import Card from '../../components/Card';
 import Filters from '../../components/Filters';
 import NoProducts from '../../components/NoProducts';
@@ -9,9 +9,15 @@ import { ItemProps } from '../../data/data';
 import { REACT_APP_URL_BE } from '../../data/constants';
 import { useParams } from 'react-router-dom';
 import useMediaDevices from '../../hooks/useMediaDevices';
+import { useTranslation } from 'react-i18next';
+import Seo from '../../components/Seo';
+import { localizedPath } from '../../utils/localizedRoutes';
+
+const normalizeGame = (value: string) => value.toLowerCase().replace(/[^a-z0-9]/g, '');
 
 const Catalog: React.FC = () => {
   const params = useParams();
+  const { t, i18n } = useTranslation();
   const { mediaIsPhone } = useMediaDevices();
   const [products, setProducts] = useState<ItemProps[]>();
   const [productsShown, setProductsShown] = useState<ItemProps[]>();
@@ -21,12 +27,25 @@ const Catalog: React.FC = () => {
   const [filterGame, setFilterGame] = useState<string>("All");
   const [filterSet, setFilterSet] = useState<string>("All");
   const [filterType, setFilterType] = useState<string>("All");
+  const routeGame = games.find((availableGame) =>
+    availableGame !== "All" && normalizeGame(availableGame) === normalizeGame(params.game ?? "")
+  ) ?? "All";
+  const game = params.game
+    ? t(params.game.toLowerCase(), {
+      defaultValue: params.game.replace(/[-_]/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase()),
+    })
+    : '';
+
+  useEffect(() => {
+    setFilterGame(routeGame);
+    setFilterSet("All");
+    setFilterType("All");
+  }, [routeGame]);
   
   useEffect(() => {
     axios.get(`${REACT_APP_URL_BE}products/all/available`)
       .then(response => {
         setProducts(response.data);
-        setProductsShown(response.data);
         setGames(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.game))]);
         setSets(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.set))]);
         setTypes(["All", ...new Set<string>(response.data.map((p:ItemProps) => p.type))]);
@@ -34,7 +53,7 @@ const Catalog: React.FC = () => {
       .catch(error => {
         console.error('🔴 Error when we try to GET the products:', error);
       });
-  }, [params]);
+  }, []);
 
 
   useEffect(() => {
@@ -47,25 +66,36 @@ const Catalog: React.FC = () => {
   , [filterGame, filterSet, filterType, products]);
 
   return (
-    <CatalogLayout>
-      {!mediaIsPhone && <Filters games={games} sets={sets} types={types} setFilterGame={setFilterGame} setFilterSet={setFilterSet} setFilterType={setFilterType}/>}
-      <CatalogContainer className={products === undefined ? "loading" : ""}>
-        {productsShown === undefined && <Loading />}
-        {productsShown && productsShown.length === 0 && <NoProducts />}
-        {productsShown?.map((product) => (
-          <Card
-            key={product._id}
-            title={product.name}
-            image={product?.image[0]}
-            price={product.price}
-            status={product.status}
-            description={product.description}
-            // onAddToCart={() => handleAddToCart(product.id)}
-            detailLink={`/product/${product.game}/${product._id}`}
+    <>
+      {params.game && (
+        <>
+          <Seo
+            title={t('seoCatalogTitle', { game })}
+            description={t('seoCatalogDescription', { game })}
           />
-        ))}
-      </CatalogContainer>
-    </CatalogLayout>
+          <CatalogHeading>{game}</CatalogHeading>
+        </>
+      )}
+      <CatalogLayout>
+        {!mediaIsPhone && <Filters games={games} sets={sets} types={types} routeGame={routeGame} setFilterGame={setFilterGame} setFilterSet={setFilterSet} setFilterType={setFilterType}/>}
+        <CatalogContainer className={products === undefined ? "loading" : ""}>
+          {productsShown === undefined && <Loading />}
+          {productsShown && productsShown.length === 0 && <NoProducts />}
+          {productsShown?.map((product) => (
+            <Card
+              key={product._id}
+              title={product.name}
+              image={product?.image[0]}
+              price={product.price}
+              status={product.status}
+              description={product.description}
+              // onAddToCart={() => handleAddToCart(product.id)}
+              detailLink={localizedPath(`/product/${product.game}/${product._id}`, i18n.language)}
+            />
+          ))}
+        </CatalogContainer>
+      </CatalogLayout>
+    </>
   );
 };
 

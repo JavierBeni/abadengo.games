@@ -14,23 +14,28 @@ import azuki from '../../assets/azuki.webp';
 import { useMediaDevices } from '../../hooks';
 import { useNavigate } from 'react-router-dom';
 import Catalog from '../Catalog';
+import { useTranslation } from 'react-i18next';
+import Seo from '../../components/Seo';
+import { localizedPath } from '../../utils/localizedRoutes';
 
 const Home: React.FC = () => {
+  const { t, i18n } = useTranslation();
   const { mediaIsPhone } = useMediaDevices();
   const navigate = useNavigate();
   const slides = [
-    {image: one_piece, action: () => navigate("/catalog/onepiece")},
-    {image: pokemon, action: () => navigate("/catalog/pokemon")},
-    {image: lorcana, action: () => navigate("/catalog/lorcana")},
-    {image: riftbound, action: () => navigate("/catalog/riftbound")},
-    {image: dragon_ball, action: () => navigate("/catalog/dragonball")},
-    {image: naruto, action: () => navigate("/catalog/naruto")},
-    {image: azuki, action: () => navigate("/catalog/azuki")},
-    {image: fairytail, action: () => navigate("/catalog/fairytail")}
+    {image: one_piece, action: () => navigate(localizedPath("/catalog/onepiece", i18n.language))},
+    {image: pokemon, action: () => navigate(localizedPath("/catalog/pokemon", i18n.language))},
+    {image: lorcana, action: () => navigate(localizedPath("/catalog/lorcana", i18n.language))},
+    {image: riftbound, action: () => navigate(localizedPath("/catalog/riftbound", i18n.language))},
+    {image: dragon_ball, action: () => navigate(localizedPath("/catalog/dragonball", i18n.language))},
+    {image: naruto, action: () => navigate(localizedPath("/catalog/naruto", i18n.language))},
+    {image: azuki, action: () => navigate(localizedPath("/catalog/azuki", i18n.language))},
+    {image: fairytail, action: () => navigate(localizedPath("/catalog/fairytail", i18n.language))}
   ];
 
   return (
     <>
+      <Seo title={t('seoHomeTitle')} description={t('seoHomeDescription')} />
       {!mediaIsPhone ? <ImageBG src={bg_home} alt="Overlay"/> : null}
       <Main>
         <h1>Welcome to Abadengo Games</h1>
