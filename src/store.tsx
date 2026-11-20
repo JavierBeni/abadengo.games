@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import { persist } from "zustand/middleware";
 
+const DEFAULT_EUR_RATE = 4.3;
+let eurRateRequest: Promise<void> | null = null;
+
+interface NbpRateResponse {
+  rates?: Array<{ mid?: number }>;
+}
 
 export interface CartItem {
     id: number;
@@ -18,6 +24,8 @@ export interface StoreState {
   clearCart: () => void;
   language: string;
   modifyLanguage: (lang: string) => void;
+  eurRate: number;
+  fetchEurRate: () => Promise<void>;
 }
 
 export const useStore = create<StoreState>()(
@@ -28,6 +36,29 @@ export const useStore = create<StoreState>()(
         total: 0,
       },
       language: "en",
+      eurRate: DEFAULT_EUR_RATE,
+      fetchEurRate: () => {
+        if (!eurRateRequest) {
+          eurRateRequest = (async () => {
+            try {
+              const response = await fetch('https://api.nbp.pl/api/exchangerates/rates/a/eur/?format=json');
+              if (!response.ok) throw new Error(`Exchange rate request failed: ${response.status}`);
+
+              const data: NbpRateResponse = await response.json();
+              const rate = data.rates?.[0]?.mid;
+              if (typeof rate !== 'number' || !Number.isFinite(rate) || rate <= 0) {
+                throw new Error('Invalid EUR exchange rate response');
+              }
+
+              set({ eurRate: rate });
+            } catch {
+              set({ eurRate: DEFAULT_EUR_RATE });
+            }
+          })();
+        }
+
+        return eurRateRequest;
+      },
       addItem: (item) =>
         set((state) => {
           const updatedItems = [...state.cart.items, item];
@@ -51,6 +82,7 @@ export const useStore = create<StoreState>()(
     }),
     {
       name: "store-storage", // Nombre en localStorage
+      partialize: (state) => ({ cart: state.cart, language: state.language }),
     }
   )
 );

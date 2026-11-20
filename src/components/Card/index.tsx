@@ -1,9 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardContainer, Title, Price, Actions, Image, PriceSeparator } from "./styles";
 import React from "react";
 import { isValidImageUrl } from "../../utils/validators";
 import { truncateText } from "../../utils";
+import { useStore } from "../../store";
 
 interface CardProps {
   title: string;
@@ -24,7 +25,7 @@ const Card: React.FC<CardProps> = ({
   status,
   detailLink,
 }) => {
-  const [eurRate, setEurRate] = useState(4.3);
+  const eurRate = useStore((state) => state.eurRate);
   const navigate = useNavigate();
 
   const handleCardClick = useCallback(() => {
@@ -34,24 +35,6 @@ const Card: React.FC<CardProps> = ({
   const validatedImage = useMemo(() => {
     return image && isValidImageUrl(image) ? image : DEFAULT_IMAGE;
   }, [image]);
-
-  useEffect(() => {
-    const fetchEuroRate = async () => {
-      try {
-        const response = await fetch('https://api.nbp.pl/api/exchangerates/rates/a/eur/');
-        if (!response.ok) 
-          throw new Error(`Error en la petición: ${response.status}`);
-        const data = await response.json();
-        const midRate = data.rates[0].mid;
-        
-        setEurRate(midRate);
-      } catch (err) {
-        setEurRate(4.3);
-      }
-    };
-
-    fetchEuroRate();
-  }, []);
 
   return (
     <CardContainer onClick={handleCardClick}>

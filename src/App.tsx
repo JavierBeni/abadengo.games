@@ -24,7 +24,12 @@ function LocalizedLayout() {
   const { i18n } = useTranslation();
   const storedLanguage = useStore((state) => state.language);
   const modifyLanguage = useStore((state) => state.modifyLanguage);
+  const fetchEurRate = useStore((state) => state.fetchEurRate);
 
+  useEffect(() => {
+    void fetchEurRate();
+  }, [fetchEurRate]);
+  
   useEffect(() => {
     if (!isSupportedLanguage(lang)) return;
     if (i18n.language !== lang) void i18n.changeLanguage(lang);
